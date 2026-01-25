@@ -10,7 +10,7 @@ Build an air-gap file transfer tool you can trust. Ship it. See what happens.
 v1.0.0 Release
 --------------
 
-**Release Goal:** This project will reach v1.0.0 as part of a coordinated release with AirGap Whisper and AirGap Deploy.
+**Release Goal:** This project will reach v1.0.0 as part of a coordinated release with Cleanroom Whisper and AirGap Deploy.
 
 **v1.0.0 Scope:** The MVP features documented in this roadmap.
 
