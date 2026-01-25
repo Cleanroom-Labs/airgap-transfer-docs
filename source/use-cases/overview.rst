@@ -82,7 +82,7 @@ AirGap Transfer is designed to integrate with the AirGap Deploy project for comp
 
 - **AirGap Deploy:** Orchestrates overall deployment process, prepares packages
 - **AirGap Transfer:** Handles chunked data transfer when packages exceed USB capacity
-- **AirGap Whisper:** Example application deployed using AirGap Deploy
+- **Cleanroom Whisper:** Example application deployed using AirGap Deploy
 
 **See:** :doc:`AirGap Deploy workflow examples <../../airgap-deploy/use-cases/overview>`
 
