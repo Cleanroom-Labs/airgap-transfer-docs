@@ -1,6 +1,8 @@
 Project Roadmap
 ===============
 
+|status-active|
+
 Build an air-gap file transfer tool you can trust. Ship it. See what happens.
 
 **Guiding document:** :doc:`Principles <../meta/principles>`
