@@ -1,10 +1,10 @@
-Use Cases and Workflows
-=======================
+Use Cases
+=========
 
 .. toctree::
    :maxdepth: 1
 
    overview
-   workflow-large-file
-   workflow-large-directory
-   workflow-multiple-usb
+   use-case-large-file
+   use-case-large-directory
+   use-case-multiple-usb

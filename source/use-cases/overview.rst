@@ -55,7 +55,7 @@ Large File Transfer
 - Verify integrity after reconstruction
 - Resume if interrupted
 
-:doc:`Workflow: Large File Transfer <workflow-large-file>`
+:doc:`Workflow: Large File Transfer <use-case-large-file>`
 
 --------------
 
@@ -70,7 +70,7 @@ Large Directory Transfer
 - Handle mixed file sizes efficiently
 - Batch verification
 
-:doc:`Workflow: Large Directory Transfer <workflow-large-directory>`
+:doc:`Workflow: Large Directory Transfer <use-case-large-directory>`
 
 --------------
 
@@ -85,7 +85,7 @@ Multiple USB Workflow
 - Track which chunks are on which USB
 - Resume with any available USB
 
-:doc:`Workflow: Multi-USB Dataset Transfer <workflow-multiple-usb>`
+:doc:`Workflow: Multi-USB Dataset Transfer <use-case-multiple-usb>`
 
 --------------
 

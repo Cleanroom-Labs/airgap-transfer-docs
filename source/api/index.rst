@@ -235,4 +235,4 @@ See Also
 - :doc:`/airgap-transfer/requirements/srs` - Requirements this API implements
 - :doc:`/airgap-transfer/design/sdd` - Detailed design specifications
 - :doc:`/airgap-transfer/testing/plan` - Test cases validating this API
-- :doc:`/airgap-transfer/use-cases/workflow-large-file` - Real-world usage example
+- :doc:`/airgap-transfer/use-cases/use-case-large-file` - Real-world usage example

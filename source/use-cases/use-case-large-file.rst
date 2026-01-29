@@ -1,4 +1,4 @@
-Workflow: Large File Transfer
+Use Case: Large File Transfer
 =============================
 
 Scenario
