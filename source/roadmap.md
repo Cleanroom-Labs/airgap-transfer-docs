@@ -36,8 +36,6 @@ All requirements, design, and test specifications are complete. Ready to start M
 
 **MVP Goal:** Successfully transfer 10GB dataset across air-gap with checksum verification.
 
----
-
 ## MVP Scope
 
 | Feature | Implementation |
@@ -48,8 +46,6 @@ All requirements, design, and test specifications are complete. Ready to start M
 | Integrity | SHA-256 checksums for all operations |
 | Resume | Continue interrupted transfers |
 | CLI | Command-line interface with options |
-
----
 
 ## Implementation Milestones
 
