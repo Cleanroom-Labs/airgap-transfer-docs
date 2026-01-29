@@ -4,7 +4,7 @@ Build an air-gap file transfer tool you can trust. Ship it. See what happens.
 
 <br>
 
-**Guiding document:** [Principles](https://cleanroomlabs.dev/docs/meta/principles/)
+**Guiding document:** [Principles](https://cleanroomlabs.dev/docs/meta/principles.html)
 
 ## v1.0.0 Release
 
@@ -14,7 +14,7 @@ Build an air-gap file transfer tool you can trust. Ship it. See what happens.
 
 **Cross-Project Integration:** v1.0.0 validates the multi-USB transfer scenario works end-to-end with AirGap Deploy.
 
-**Release Coordination:** See [Release Roadmap](/meta/release-roadmap) for cross-project timeline and integration milestones.
+**Release Coordination:** See [Release Roadmap](https://cleanroomlabs.dev/docs/meta/release-roadmap.html) for cross-project timeline and integration milestones.
 
 <br>
 
@@ -205,7 +205,7 @@ Build it. Use it. Then improve it.
 
 | Document | Purpose |
 |----------|---------|
-| [Principles](https://cleanroomlabs.dev/docs/meta/principles/) | Design principles (read first) |
+| [Principles](https://cleanroomlabs.dev/docs/meta/principles.html) | Design principles (read first) |
 | [Requirements (SRS)](requirements/srs) | Functional and non-functional requirements |
 | [Design (SDD)](design/sdd) | Architecture and component design |
 | [Test Plan](testing/plan) | Test cases with traceability |

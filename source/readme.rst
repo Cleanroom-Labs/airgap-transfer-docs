@@ -196,7 +196,7 @@ Start Here
 | :doc:`Roadmap <roadmap>`                    | Project status and direction        |
 +---------------------------------------------+-------------------------------------+
 
-.. _Principles: https://cleanroomlabs.dev/docs/meta/principles/
+.. _Principles: https://cleanroomlabs.dev/docs/meta/principles.html
 
 Technical Documentation
 ~~~~~~~~~~~~~~~~~~~~~~~
