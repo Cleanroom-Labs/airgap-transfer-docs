@@ -1,5 +1,5 @@
-AirGap Transfer API Reference
-==============================
+API Reference
+=============
 
 .. note::
 
@@ -9,7 +9,7 @@ AirGap Transfer API Reference
 Planned Architecture
 --------------------
 
-Based on :doc:`/airgap-transfer/design/sdd`, AirGap Transfer will consist of these modules:
+Based on :doc:`../design/sdd`, AirGap Transfer will consist of these modules:
 
 CLI Module (``cli``)
 ~~~~~~~~~~~~~~~~~~~~
@@ -23,7 +23,6 @@ CLI Module (``cli``)
 - ``ListCommand`` - List operation handler
 - ``Args`` - Argument parser using clap
 
-**Implements Requirements:** FR-TRANSFER-028, FR-TRANSFER-029, FR-TRANSFER-030
 
 Chunker Module (``chunker``)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -36,7 +35,6 @@ Chunker Module (``chunker``)
 - ``ChunkWriter`` - Write chunks to tar archives
 - ``StreamingReader`` - Memory-efficient file reading
 
-**Implements Requirements:** FR-TRANSFER-001, FR-TRANSFER-002, FR-TRANSFER-005
 
 Assembler Module (``assembler``)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -49,7 +47,6 @@ Assembler Module (``assembler``)
 - ``ChunkReader`` - Read chunks from tar archives
 - ``FileWriter`` - Write reconstructed files
 
-**Implements Requirements:** FR-TRANSFER-009, FR-TRANSFER-011, FR-TRANSFER-012
 
 Hash Module (``hash``)
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -62,7 +59,6 @@ Hash Module (``hash``)
 - ``ChecksumVerifier`` - Verify chunk integrity
 - ``ManifestValidator`` - Validate manifest checksums
 
-**Implements Requirements:** FR-TRANSFER-020, FR-TRANSFER-021, FR-TRANSFER-022
 
 Manifest Module (``manifest``)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -75,7 +71,6 @@ Manifest Module (``manifest``)
 - ``ChunkMetadata`` - Individual chunk information
 - ``StateManager`` - Operation state persistence
 
-**Implements Requirements:** FR-TRANSFER-004, FR-TRANSFER-024, FR-TRANSFER-025
 
 USB Module (``usb``)
 ~~~~~~~~~~~~~~~~~~~~
@@ -88,7 +83,6 @@ USB Module (``usb``)
 - ``MountMonitor`` - Monitor mount/unmount events
 - ``SpaceChecker`` - Verify available space
 
-**Implements Requirements:** FR-TRANSFER-002, FR-TRANSFER-008, FR-TRANSFER-035
 
 Integration with Sphinx
 ------------------------
@@ -223,16 +217,16 @@ Future Enhancements
 
 When implementation begins:
 
-Add ``.. impl::`` directives for each module
-Link implementations to requirements in traceability matrix
-Auto-generate API docs with sphinxcontrib-rust
-Document async operation patterns
-Add workflow examples with code snippets
+- Add ``.. impl::`` directives for each module
+- Link implementations to requirements in traceability matrix
+- Auto-generate API docs with sphinxcontrib-rust
+- Document async operation patterns
+- Add workflow examples with code snippets
 
 See Also
 --------
 
-- :doc:`/airgap-transfer/requirements/srs` - Requirements this API implements
-- :doc:`/airgap-transfer/design/sdd` - Detailed design specifications
-- :doc:`/airgap-transfer/testing/plan` - Test cases validating this API
-- :doc:`/airgap-transfer/use-cases/use-case-large-file` - Real-world usage example
+- :doc:`../requirements/srs` - Requirements this API implements
+- :doc:`../design/sdd` - Detailed design specifications
+- :doc:`../testing/plan` - Test cases validating this API
+- :doc:`../use-cases/use-case-large-file` - Real-world usage example
