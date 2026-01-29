@@ -2,14 +2,12 @@ Test Plan
 =========
 
 Introduction
----------------
+------------
 
 This test plan covers MVP requirements (:need_count:`type=='req' and 'transfer' in tags` functional requirements, :need_count:`type=='nfreq' and 'transfer' in tags` non-functional requirements).
 
---------------
-
 Test Strategy
-----------------
+-------------
 
 Test Levels
 ~~~~~~~~~~~
@@ -69,10 +67,8 @@ Large file handling       Time-intensive, requires disk space
 Resume after interruption Requires manual interruption
 ========================= ===================================
 
---------------
-
 Test Cases by Category
--------------------------
+----------------------
 
 Pack Operation Tests
 ~~~~~~~~~~~~~~~~~~~~
@@ -570,8 +566,6 @@ Deployment Tests
 
    Verify deployment produces single, static binary with no external dependencies
 
---------------
-
 Non-Functional Tests
 ~~~~~~~~~~~~~~~~~~~~
 
@@ -772,10 +766,8 @@ Non-Functional Tests
 
    Verify concurrent chunk verification improves performance
 
---------------
-
 Test Procedures
-------------------
+---------------
 
 Offline Operation Test (TC-NFR-003)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -787,10 +779,10 @@ Offline Operation Test (TC-NFR-003)
 
 **Steps:**
 
-Disconnect network
-Pack 1GB test dataset
-Unpack and verify
-Check all operations completed
+- Disconnect network
+- Pack 1GB test dataset
+- Unpack and verify
+- Check all operations completed
 
 **Pass Criteria:** All operations complete successfully with no network.
 
@@ -804,14 +796,12 @@ Checksum Verification Test (TC-INT-003)
 
 **Steps:**
 
-Corrupt one chunk file (modify 1 byte)
-Run unpack operation
-Verify error is reported
-Confirm unpack aborts
+- Corrupt one chunk file (modify 1 byte)
+- Run unpack operation
+- Verify error is reported
+- Confirm unpack aborts
 
 **Pass Criteria:** Corrupted chunk detected, unpack aborted with clear error.
-
---------------
 
 Pass/Fail Criteria
 ---------------------

@@ -6,8 +6,6 @@ Purpose
 
 This document provides an overview of primary use cases for AirGap Transfer, a tool for safely transferring large files and datasets across air-gap boundaries using removable media.
 
---------------
-
 User Personas
 -------------
 
@@ -39,8 +37,6 @@ Field Technician
 - **Environment:** Industrial control systems, remote sites with limited USB capacity
 - **Priority:** Multi-USB coordination, simple CLI, error recovery
 
---------------
-
 Primary Use Cases
 -----------------
 
@@ -49,6 +45,10 @@ Large File Transfer
 
 **Scenario:** Transfer a single large file (e.g., VM image, video file) that exceeds USB drive capacity.
 
+.. raw:: html
+
+   <div style="margin-top: 1.5em;"></div>
+
 **Key Requirements:**
 
 - Split file into chunks
@@ -56,8 +56,6 @@ Large File Transfer
 - Resume if interrupted
 
 :doc:`Workflow: Large File Transfer <use-case-large-file>`
-
---------------
 
 Large Directory Transfer
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -72,8 +70,6 @@ Large Directory Transfer
 
 :doc:`Workflow: Large Directory Transfer <use-case-large-directory>`
 
---------------
-
 Multiple USB Workflow
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -86,8 +82,6 @@ Multiple USB Workflow
 - Resume with any available USB
 
 :doc:`Workflow: Multi-USB Dataset Transfer <use-case-multiple-usb>`
-
---------------
 
 Common Requirements Across All Use Cases
 ----------------------------------------
@@ -106,8 +100,6 @@ Common Requirements Across All Use Cases
 | Clear error messages                 | Guide user through recovery procedures        |
 +--------------------------------------+-----------------------------------------------+
 
---------------
-
 Integration with AirGap Deploy
 ------------------------------
 
@@ -118,8 +110,6 @@ AirGap Transfer is designed to integrate with the AirGap Deploy project for comp
 - **Cleanroom Whisper:** Example application deployed using AirGap Deploy
 
 **See:** :doc:`AirGap Deploy workflow examples <../../airgap-deploy/use-cases/overview>`
-
---------------
 
 Out of Scope
 ------------
@@ -140,8 +130,6 @@ The following are explicitly NOT supported in MVP:
 | Encryption                       | Adds key management complexity, defer     |
 +----------------------------------+-------------------------------------------+
 
---------------
-
 Success Metrics
 ---------------
 
@@ -153,8 +141,6 @@ Resume success rate          > 95% (interrupted transfers)
 User errors                  < 5% (clear guidance prevents mistakes)
 Cross-platform compatibility macOS, Windows, Linux
 ============================ =======================================
-
---------------
 
 See Also
 --------

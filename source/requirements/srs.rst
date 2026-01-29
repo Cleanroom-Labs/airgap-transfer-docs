@@ -2,7 +2,7 @@ Software Requirements Specification
 ===================================
 
 Introduction
----------------
+------------
 
 Purpose
 ~~~~~~~
@@ -14,6 +14,10 @@ Scope
 
 **Product:** AirGap Transfer — a minimal CLI tool for chunked file transfers via removable media.
 
+.. raw:: html
+
+   <div style="margin-top: 1.5em;"></div>
+
 **In Scope:**
 
 - Split large datasets into chunks for USB transfer
@@ -21,7 +25,7 @@ Scope
 - Resume interrupted transfers
 - Cross-platform support (macOS, Windows, Linux)
 
-**Out of Scope (per** :doc:`Principles <../../meta/principles>`\ **):**
+**Out of Scope:**
 
 - Network transfers, cloud sync, auto-updates
 - Compression or encryption (defer to post-MVP)
@@ -46,8 +50,6 @@ Definitions
 | Manifest              | Metadata file describing chunk inventory and checksums           |
 +-----------------------+------------------------------------------------------------------+
 
---------------
-
 Overall Description
 ----------------------
 
@@ -55,9 +57,7 @@ Product Perspective
 ~~~~~~~~~~~~~~~~~~~
 
 Standalone CLI tool for transferring data across air-gap boundaries using removable media.
-
 All operations occur locally with no network connectivity.
-
 See the :doc:`Software Design Document <../design/sdd>` for architecture diagrams and component details.
 
 Constraints
@@ -72,8 +72,6 @@ Platforms     macOS, Windows, Linux
 UI model      Command-line interface only (no GUI)
 Media         Works with standard removable media (USB, external drives)
 ============= ==========================================================
-
---------------
 
 Functional Requirements
 --------------------------
@@ -529,8 +527,6 @@ Deployment
 
    Single, static binary deployment
 
---------------
-
 Non-Functional Requirements
 ------------------------------
 
@@ -734,8 +730,6 @@ Deployment
 
    Build and run on systems with no internet access
 
---------------
-
 .. _error-handling-1:
 
 Error Handling
@@ -756,8 +750,6 @@ Error Handling
 +-----------------------------------+--------------------------------------------------------+
 | USB disconnected during operation | Detect failure, allow resume from last completed chunk |
 +-----------------------------------+--------------------------------------------------------+
-
---------------
 
 Appendix: Chunk Format Specification
 ------------------------------------

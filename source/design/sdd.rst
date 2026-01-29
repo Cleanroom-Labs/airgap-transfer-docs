@@ -8,8 +8,6 @@ This SDD describes the architecture and design of AirGap Transfer’s MVP.
 
 **Guiding document:** :doc:`Principles <../../meta/principles>`
 
---------------
-
 Architecture Overview
 ------------------------
 
@@ -54,8 +52,6 @@ SHA-256 verification   Industry-standard cryptographic integrity
 No compression         Simplicity, defer to post-MVP
 ====================== ==============================================
 
---------------
-
 File Structure
 -----------------
 
@@ -79,10 +75,8 @@ Per `principles.md <../../principles.md>`__: **Flat structure, minimal modules**
    └── .cargo/
        └── config.toml      # Points to vendor directory
 
---------------
-
 Data Design
---------------
+-----------
 
 Manifest Structure
 ~~~~~~~~~~~~~~~~~~
@@ -128,10 +122,8 @@ State Persistence
 - **Unpack operation:** Read from USB chunk location
 - **Resume:** Manifest status field tracks completed chunks
 
---------------
-
 Component Design
--------------------
+----------------
 
 CLI Parser (main.rs)
 ~~~~~~~~~~~~~~~~~~~~
@@ -154,6 +146,10 @@ Chunker (chunker.rs)
 
 **Core responsibility:** Streaming chunk creation and reconstruction
 
+.. raw:: html
+
+   <div style="margin-top: 1.5em;"></div>
+
 **Pack behavior:**
 
 - Stream source files into tar format
@@ -172,6 +168,10 @@ Verifier (verifier.rs)
 
 **Core responsibility:** Cryptographic integrity verification
 
+.. raw:: html
+
+   <div style="margin-top: 1.5em;"></div>
+
 **Functions:**
 
 - Generate SHA-256 checksum during streaming
@@ -182,6 +182,10 @@ Manifest (manifest.rs)
 ~~~~~~~~~~~~~~~~~~~~~~
 
 **Core responsibility:** Metadata persistence and state management
+
+.. raw:: html
+
+   <div style="margin-top: 1.5em;"></div>
 
 **Functions:**
 
@@ -195,6 +199,10 @@ USB Handler (usb.rs)
 
 **Core responsibility:** Removable media detection and capacity checks
 
+.. raw:: html
+
+   <div style="margin-top: 1.5em;"></div>
+
 **Functions:**
 
 - Detect USB mount points (platform-specific)
@@ -202,10 +210,8 @@ USB Handler (usb.rs)
 - Auto-determine optimal chunk size
 - Sync filesystem before USB removal prompt
 
---------------
-
 Interaction Flows
---------------------
+-----------------
 
 Pack Operation
 ~~~~~~~~~~~~~~
@@ -251,14 +257,16 @@ Unpack Operation
     │ "Complete: verified"   │                        │
     │◄───────────────────────│                        │
 
---------------
-
 Dependencies
 ---------------
 
 **Minimal crates:** Target ≤10 direct dependencies
 
 See :doc:`Principles <../../meta/principles>` for dependency guidelines.
+
+.. raw:: html
+
+   <div style="margin-top: 1.5em;"></div>
 
 **Expected dependencies:**
 
@@ -268,10 +276,8 @@ See :doc:`Principles <../../meta/principles>` for dependency guidelines.
 - tar_ - Tar archive creation/extraction
 - Platform-specific filesystem libs (stdlib where possible)
 
---------------
-
 Security & Privacy
----------------------
+------------------
 
 **Privacy by architecture:** No network code exists in the application.
 
@@ -284,15 +290,17 @@ Checksum bypass   Mandatory verification (with –verify flag)
 Malicious chunks  Verify checksums before extraction
 ================= ==========================================
 
---------------
-
 Deployment
--------------
+----------
 
 Air-Gap Support
 ~~~~~~~~~~~~~~~
 
 The application supports deployment on air-gapped systems (no internet access).
+
+.. raw:: html
+
+   <div style="margin-top: 1.5em;"></div>
 
 **Requirements:**
 
@@ -311,10 +319,8 @@ Windows  .exe               Standalone executable
 Linux    Binary + .deb/.rpm Static binary preferred
 ======== ================== =================================
 
---------------
-
 Platform Considerations
----------------------------
+-----------------------
 
 USB Detection
 ~~~~~~~~~~~~~
