@@ -6,8 +6,6 @@ Build an air-gap file transfer tool you can trust. Ship it. See what happens.
 
 **Guiding document:** [Principles](../meta/principles)
 
----
-
 ## v1.0.0 Release
 
 **Release Goal:** This project will reach v1.0.0 as part of a coordinated release with Cleanroom Whisper and AirGap Deploy.
@@ -21,8 +19,6 @@ Build an air-gap file transfer tool you can trust. Ship it. See what happens.
 <br>
 
 **Target Date:** March 28, 2026 (MVP Complete)
-
----
 
 ## Current Status
 

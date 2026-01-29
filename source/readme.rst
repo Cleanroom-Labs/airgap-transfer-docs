@@ -18,9 +18,9 @@ How It Works
 
 Transfer large datasets that exceed single USB drive capacity:
 
-**Pack**: Split source files into chunks that fit on available USB drives
-**Transfer**: Move USB drives across air-gap boundary
-**Unpack**: Reconstruct original files on destination machine with verification
+- **Pack**: Split source files into chunks that fit on available USB drives
+- **Transfer**: Move USB drives across air-gap boundary
+- **Unpack**: Reconstruct original files on destination machine with verification
 
 All operations maintain data integrity through cryptographic checksums.
 

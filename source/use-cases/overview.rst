@@ -55,7 +55,7 @@ Large File Transfer
 - Verify integrity after reconstruction
 - Resume if interrupted
 
-:doc:`Workflow: Large File Transfer <use-case-large-file>`
+:doc:`Use Case: Large File Transfer <use-case-large-file>`
 
 Large Directory Transfer
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -68,7 +68,7 @@ Large Directory Transfer
 - Handle mixed file sizes efficiently
 - Batch verification
 
-:doc:`Workflow: Large Directory Transfer <use-case-large-directory>`
+:doc:`Use Case: Large Directory Transfer <use-case-large-directory>`
 
 Multiple USB Workflow
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -81,7 +81,7 @@ Multiple USB Workflow
 - Track which chunks are on which USB
 - Resume with any available USB
 
-:doc:`Workflow: Multi-USB Dataset Transfer <use-case-multiple-usb>`
+:doc:`Use Case: Multi-USB Dataset Transfer <use-case-multiple-usb>`
 
 Common Requirements Across All Use Cases
 ----------------------------------------
@@ -145,6 +145,8 @@ Cross-platform compatibility macOS, Windows, Linux
 See Also
 --------
 
-- :doc:`Requirements <../requirements/srs>`
-- :doc:`Design <../design/sdd>`
-- :doc:`Roadmap <../roadmap>`
+- :doc:`Requirements (SRS) <../requirements/srs>` - Detailed functional requirements
+- :doc:`Design (SDD) <../design/sdd>` - Architecture and implementation
+- :doc:`Test Plan <../testing/plan>` - Test cases and verification
+- :doc:`Roadmap <../roadmap>` - Implementation roadmap
+- :doc:`Principles </meta/principles>` - Design principles guiding all decisions
