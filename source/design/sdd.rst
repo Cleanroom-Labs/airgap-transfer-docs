@@ -6,7 +6,7 @@ Introduction
 
 This SDD describes the architecture and design of AirGap Transfer’s MVP.
 
-**Guiding document:** `Principles <https://cleanroomlabs.dev/docs/meta/principles/>`_
+**Guiding document:** `Principles <https://cleanroomlabs.dev/docs/meta/principles.html>`_
 
 Architecture Overview
 ------------------------
@@ -262,7 +262,7 @@ Dependencies
 
 **Minimal crates:** Target ≤10 direct dependencies
 
-See `Principles <https://cleanroomlabs.dev/docs/meta/principles/>`_ for dependency guidelines.
+See `Principles <https://cleanroomlabs.dev/docs/meta/principles.html>`_ for dependency guidelines.
 
 .. raw:: html
 

@@ -109,7 +109,7 @@ AirGap Transfer is designed to integrate with the AirGap Deploy project for comp
 - **AirGap Transfer:** Handles chunked data transfer when packages exceed USB capacity
 - **Cleanroom Whisper:** Example application deployed using AirGap Deploy
 
-**See:** :doc:`AirGap Deploy workflow examples <../../airgap-deploy/use-cases/overview>`
+**See:** `AirGap Deploy workflow examples <https://cleanroomlabs.dev/docs/airgap-deploy/use-cases/overview.html>`_
 
 Out of Scope
 ------------
@@ -149,4 +149,4 @@ See Also
 - :doc:`Design (SDD) <../design/sdd>` - Architecture and implementation
 - :doc:`Test Plan <../testing/plan>` - Test cases and verification
 - :doc:`Roadmap <../roadmap>` - Implementation roadmap
-- `Principles <https://cleanroomlabs.dev/docs/meta/principles/>`_ - Design principles guiding all decisions
+- `Principles <https://cleanroomlabs.dev/docs/meta/principles.html>`_ - Design principles guiding all decisions
