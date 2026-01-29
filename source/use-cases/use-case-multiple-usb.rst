@@ -1,5 +1,5 @@
-Workflow: Multi-USB Dataset Transfer
-====================================
+Use Case: Multi-USB Dataset Transfer
+=====================================
 
 Scenario
 --------

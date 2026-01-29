@@ -1,4 +1,4 @@
-Workflow: Large Directory Transfer
+Use Case: Large Directory Transfer
 ==================================
 
 Scenario
