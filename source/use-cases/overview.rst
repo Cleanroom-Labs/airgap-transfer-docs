@@ -8,6 +8,39 @@ This document provides an overview of primary use cases for AirGap Transfer, a t
 
 --------------
 
+User Personas
+-------------
+
+IT Administrator
+~~~~~~~~~~~~~~~~
+
+- **Needs:** Move deployment packages and updates to air-gapped servers
+- **Environment:** Air-gapped data centers, secure facilities
+- **Priority:** Reliability, verification, clear progress reporting
+
+Data Scientist / Researcher
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- **Needs:** Transfer large datasets (ML models, experiment data) to isolated compute
+- **Environment:** Research lab with air-gapped GPU cluster
+- **Priority:** Handle multi-GB files, resume interrupted transfers
+
+Security Operations Staff
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- **Needs:** Move patches, tools, and forensic data across security boundaries
+- **Environment:** Government, military, or compliance-sensitive infrastructure
+- **Priority:** Integrity verification, chain-of-custody support, audit trail
+
+Field Technician
+~~~~~~~~~~~~~~~~
+
+- **Needs:** Deliver software updates to remote air-gapped installations
+- **Environment:** Industrial control systems, remote sites with limited USB capacity
+- **Priority:** Multi-USB coordination, simple CLI, error recovery
+
+--------------
+
 Primary Use Cases
 -----------------
 
