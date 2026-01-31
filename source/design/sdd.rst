@@ -29,7 +29,7 @@ System Context
    │                  ▼              ▼              ▼       │
    │       ┌──────────────┐  ┌─────────────┐  ┌─────────┐   │
    │       │   Chunker    │  │  Verifier   │  │  State  │   │
-   │       │  (streaming) │  │  (SHA-256)  │  │ (JSON)  │   │
+   │       │  (streaming) │  │ (pluggable) │  │ (JSON)  │   │
    │       └──────┬───────┘  └─────────────┘  └─────────┘   │
    │              │                                         │
    │              ▼                                         │
@@ -48,7 +48,7 @@ Pure Rust              Memory safety, cross-platform, minimal runtime
 CLI only               Focus on functionality, defer GUI to post-MVP
 Streaming architecture Handle files larger than available RAM
 JSON manifest          Human-readable, easy to inspect and debug
-SHA-256 verification   Industry-standard cryptographic integrity
+Pluggable hash verify  Trait-based interface; SHA-256 default, extensible to future algorithms
 No compression         Simplicity, defer to post-MVP
 ====================== ==============================================
 
@@ -91,6 +91,7 @@ Manifest Structure
      "source_path": "/path/to/source",
      "total_size_bytes": 10737418240,
      "chunk_size_bytes": 1073741824,
+     "hash_algorithm": "sha256",
      "chunk_count": 10,
      "chunks": [
        {
@@ -139,7 +140,7 @@ CLI Parser (main.rs)
      unpack <source> <dest>    Reconstruct from chunks
      list <chunk-location>     Show chunk inventory
 
-**Global options:** ``--dry-run``, ``--verbose``, ``--verify``, ``--chunk-size``
+**Global options:** ``--dry-run``, ``--verbose``, ``--verify``, ``--chunk-size``, ``--hash-algorithm``
 
 Chunker (chunker.rs)
 ~~~~~~~~~~~~~~~~~~~~
@@ -174,9 +175,12 @@ Verifier (verifier.rs)
 
 **Functions:**
 
-- Generate SHA-256 checksum during streaming
-- Verify chunk checksum matches manifest
+- Generate checksum during streaming using configured algorithm
+- Verify chunk checksum matches manifest (algorithm-aware)
 - Report verification failures with details
+
+The verifier implements a ``HashAlgorithm`` trait. New algorithms are added by implementing
+this trait — no changes to the chunker, manifest, or CLI modules required.
 
 Manifest (manifest.rs)
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -272,7 +276,7 @@ See `Principles <https://cleanroomlabs.dev/docs/meta/principles.html>`_ for depe
 
 - clap_ - CLI argument parsing
 - serde_ / serde_json_ - Manifest serialization
-- sha2_ - SHA-256 checksums
+- sha2_ - SHA-256 checksums (default backend); trait interface supports additional backends
 - tar_ - Tar archive creation/extraction
 - Platform-specific filesystem libs (stdlib where possible)
 
