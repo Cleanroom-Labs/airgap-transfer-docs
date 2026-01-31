@@ -28,7 +28,7 @@ Scope
 **Out of Scope:**
 
 - Network transfers, cloud sync, auto-updates
-- Compression or encryption (defer to post-MVP)
+- Compression or encryption (defer to post-MVP; cryptographic agility for hashing is in scope)
 - GUI interface
 - Real-time synchronization
 - Ollama-specific logic (general-purpose only)
@@ -48,6 +48,8 @@ Definitions
 | Unpack                | Operation to reconstruct files from chunks                       |
 +-----------------------+------------------------------------------------------------------+
 | Manifest              | Metadata file describing chunk inventory and checksums           |
++-----------------------+------------------------------------------------------------------+
+| Cryptographic agility | Ability to swap hash algorithms without rearchitecting the system|
 +-----------------------+------------------------------------------------------------------+
 
 Overall Description
@@ -109,7 +111,7 @@ Pack Operation
    :tags: transfer, pack, checksum, security
    :priority: must
 
-   Generate SHA-256 checksums for each chunk
+   Generate checksums for each chunk using the configured hash algorithm (default: SHA-256)
 
 .. req:: Create Manifest File
    :id: FR-TRANSFER-004
@@ -278,7 +280,7 @@ Integrity Verification
    :tags: transfer, verification, checksum, security
    :priority: must
 
-   Generate SHA-256 checksums during pack
+   Generate checksums during pack using the configured hash algorithm (default: SHA-256)
 
 .. req:: Verify Checksums During Unpack
    :id: FR-TRANSFER-021
@@ -303,6 +305,41 @@ Integrity Verification
    :priority: should
 
    Verify final reconstructed file against original checksum
+
+Cryptographic Agility
+~~~~~~~~~~~~~~~~~~~~~
+
+.. needtable::
+   :types: req
+   :filter: "transfer" in tags and "crypto-agility" in tags
+   :columns: id,priority,title
+   :colwidths: 20,20,60
+   :style: table
+   :sort: id
+
+.. req:: Configurable Hash Algorithm
+   :id: FR-TRANSFER-045
+   :status: approved
+   :tags: transfer, crypto-agility, security
+   :priority: must
+
+   The system SHALL allow users to select a hash algorithm via CLI flag (``--hash-algorithm``). Default: SHA-256.
+
+.. req:: Algorithm Identified in Manifest
+   :id: FR-TRANSFER-046
+   :status: approved
+   :tags: transfer, crypto-agility, manifest, security
+   :priority: must
+
+   The manifest SHALL record which hash algorithm was used, so unpack can verify with the correct algorithm.
+
+.. req:: Pluggable Hash Backend
+   :id: FR-TRANSFER-047
+   :status: approved
+   :tags: transfer, crypto-agility, security
+   :priority: must
+
+   The hash module SHALL use a trait-based interface so new algorithms can be added without modifying existing code.
 
 State Management
 ~~~~~~~~~~~~~~~~
@@ -566,7 +603,7 @@ Reliability
    :tags: transfer, reliability, integrity
    :priority: must
 
-   The system SHALL verify all chunks using SHA-256 checksums before reconstruction
+   The system SHALL verify all chunks using the hash algorithm specified in the manifest before reconstruction
 
 .. nfreq:: Idempotent Operations
    :id: NFR-TRANSFER-008
@@ -711,6 +748,14 @@ Security & Privacy
 
    All data stays on local/removable media; no network calls
 
+.. nfreq:: Cryptographic Agility
+   :id: NFR-TRANSFER-022
+   :status: approved
+   :tags: transfer, security, crypto-agility
+   :priority: must
+
+   The system SHALL be designed for cryptographic agility: hash algorithms are pluggable via a common trait interface, enabling adoption of new standards (e.g., post-quantum algorithms) without architectural changes.
+
 Deployment
 ~~~~~~~~~~
 
@@ -764,6 +809,7 @@ Manifest Structure
      "source": "/path/to/source",
      "total_size": 10737418240,
      "chunk_size": 1073741824,
+     "hash_algorithm": "sha256",
      "chunks": [
        {
          "index": 0,
@@ -775,6 +821,8 @@ Manifest Structure
      ],
      "created": "2026-01-04T12:00:00Z"
    }
+
+The ``hash_algorithm`` field identifies which algorithm was used. The checksum value prefix (e.g., ``sha256:``) is redundant but kept for readability when inspecting manifests manually.
 
 Chunk Naming Convention
 ~~~~~~~~~~~~~~~~~~~~~~~
