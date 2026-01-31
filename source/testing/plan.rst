@@ -115,7 +115,7 @@ Pack Operation Tests
    :tests: FR-TRANSFER-003
    :priority: high
 
-   Verify SHA-256 checksums generated for each chunk
+   Verify checksums generated for each chunk using the configured hash algorithm
 
 .. test:: Create Manifest File
    :id: TC-PCK-005
@@ -301,7 +301,7 @@ Integrity Tests
    :tests: FR-TRANSFER-020
    :priority: critical
 
-   Verify SHA-256 checksums generated for all chunks
+   Verify checksums generated for all chunks using the configured hash algorithm
 
 .. test:: Verify Checksums During Unpack
    :id: TC-INT-002
@@ -329,6 +329,119 @@ Integrity Tests
    :priority: high
 
    Verify final reconstructed file integrity matches original
+
+Cryptographic Agility Tests
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. needtable::
+   :types: test
+   :filter: "transfer" in tags and "crypto-agility" in tags
+   :columns: id,title,tests,priority
+   :colwidths: 20,40,20,20
+   :style: table
+   :sort: id
+
+.. test:: Select Hash Algorithm via CLI
+   :id: TC-CRA-001
+   :status: approved
+   :tags: transfer, crypto-agility, cli
+   :tests: FR-TRANSFER-045
+   :priority: high
+
+   **Preconditions:** Application built and available
+
+   **Steps:**
+
+   1. Run ``airgap-transfer pack <source> <dest> --hash-algorithm sha256``
+   2. Verify pack completes and manifest shows ``"hash_algorithm": "sha256"``
+   3. Repeat with a different supported algorithm (e.g., ``sha512``)
+   4. Verify manifest reflects the selected algorithm
+
+   **Pass Criteria:** Checksums generated using the user-specified algorithm; manifest records the correct algorithm identifier.
+
+.. test:: Default Hash Algorithm
+   :id: TC-CRA-002
+   :status: approved
+   :tags: transfer, crypto-agility, cli
+   :tests: FR-TRANSFER-045
+   :priority: high
+
+   **Preconditions:** Application built and available
+
+   **Steps:**
+
+   1. Run ``airgap-transfer pack <source> <dest>`` without ``--hash-algorithm``
+   2. Inspect manifest file
+
+   **Pass Criteria:** Default algorithm is SHA-256; manifest shows ``"hash_algorithm": "sha256"``.
+
+.. test:: Algorithm Recorded in Manifest
+   :id: TC-CRA-003
+   :status: approved
+   :tags: transfer, crypto-agility, manifest
+   :tests: FR-TRANSFER-046
+   :priority: high
+
+   **Preconditions:** Pack completed with a non-default algorithm
+
+   **Steps:**
+
+   1. Pack with ``--hash-algorithm sha512``
+   2. Read manifest JSON
+   3. Verify ``hash_algorithm`` field is ``"sha512"``
+   4. Verify each chunk checksum prefix matches (e.g., ``sha512:...``)
+
+   **Pass Criteria:** Manifest correctly identifies the algorithm used; checksum prefixes are consistent.
+
+.. test:: Unpack Uses Manifest Algorithm
+   :id: TC-CRA-004
+   :status: approved
+   :tags: transfer, crypto-agility, unpack
+   :tests: FR-TRANSFER-046
+   :priority: high
+
+   **Preconditions:** Chunks packed with a non-default algorithm
+
+   **Steps:**
+
+   1. Pack with ``--hash-algorithm sha512``
+   2. Run ``airgap-transfer unpack`` (without specifying algorithm)
+   3. Verify unpack reads algorithm from manifest and verifies correctly
+
+   **Pass Criteria:** Unpack automatically uses the algorithm recorded in the manifest; verification succeeds.
+
+.. test:: Pluggable Hash Backend Interface
+   :id: TC-CRA-005
+   :status: approved
+   :tags: transfer, crypto-agility, architecture
+   :tests: FR-TRANSFER-047
+   :priority: high
+
+   **Preconditions:** Source code available
+
+   **Steps:**
+
+   1. Verify ``HashAlgorithm`` trait exists with required methods (hash, verify, algorithm identifier)
+   2. Verify SHA-256 backend implements the trait
+   3. Verify adding a new backend requires only implementing the trait (no changes to chunker, manifest, or CLI modules)
+
+   **Pass Criteria:** Trait-based interface exists; multiple backends can coexist; new backends do not require changes to other modules.
+
+.. test:: Invalid Algorithm Rejected
+   :id: TC-CRA-006
+   :status: approved
+   :tags: transfer, crypto-agility, error
+   :tests: FR-TRANSFER-045
+   :priority: medium
+
+   **Preconditions:** Application built and available
+
+   **Steps:**
+
+   1. Run ``airgap-transfer pack <source> <dest> --hash-algorithm unsupported``
+   2. Observe error output
+
+   **Pass Criteria:** Clear error message listing supported algorithms; operation does not proceed.
 
 State Management Tests
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -638,7 +751,7 @@ Non-Functional Tests
    :tests: NFR-TRANSFER-007
    :priority: critical
 
-   Verify all chunks verified with SHA-256 checksums before reconstruction
+   Verify all chunks verified with the manifest-specified hash algorithm before reconstruction
 
 .. test:: Idempotent Pack Operation
    :id: TC-TRANSFER-NFR-008
@@ -765,6 +878,25 @@ Non-Functional Tests
    :priority: low
 
    Verify concurrent chunk verification improves performance
+
+.. test:: Cryptographic Agility Architecture
+   :id: TC-TRANSFER-NFR-022
+   :status: approved
+   :tags: transfer, security, crypto-agility
+   :tests: NFR-TRANSFER-022
+   :priority: high
+
+   **Preconditions:** Source code and built binary available
+
+   **Steps:**
+
+   1. Verify hash module uses a trait-based interface (``HashAlgorithm`` trait)
+   2. Pack data with SHA-256 (default), verify checksums
+   3. Pack same data with an alternative algorithm, verify checksums
+   4. Verify both manifests are structurally identical except for algorithm and checksum values
+   5. Verify unpack correctly handles both manifests without user intervention
+
+   **Pass Criteria:** Multiple hash algorithms supported through a common interface; no architectural changes required to add a new algorithm.
 
 Test Procedures
 ---------------
