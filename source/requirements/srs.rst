@@ -94,6 +94,7 @@ Pack Operation
    :status: approved
    :tags: transfer, pack, chunking
    :priority: must
+   :release: v1.0
 
    Split source files/directories into fixed-size chunks
 
@@ -102,6 +103,7 @@ Pack Operation
    :status: approved
    :tags: transfer, pack, usb
    :priority: must
+   :release: v1.0
 
    Auto-detect USB capacity and set chunk size accordingly
 
@@ -110,6 +112,7 @@ Pack Operation
    :status: approved
    :tags: transfer, pack, checksum, security
    :priority: must
+   :release: v1.0
 
    Generate checksums for each chunk using the configured hash algorithm (default: SHA-256)
 
@@ -118,6 +121,7 @@ Pack Operation
    :status: approved
    :tags: transfer, pack, manifest
    :priority: must
+   :release: v1.0
 
    Create manifest file with chunk metadata and checksums
 
@@ -126,6 +130,7 @@ Pack Operation
    :status: approved
    :tags: transfer, pack, streaming, performance
    :priority: must
+   :release: v1.0
 
    Stream data directly to USB without intermediate temp files
 
@@ -134,6 +139,7 @@ Pack Operation
    :status: approved
    :tags: transfer, pack, configuration
    :priority: should
+   :release: v1.0
 
    Support manual chunk size specification
 
@@ -142,6 +148,7 @@ Pack Operation
    :status: approved
    :tags: transfer, pack, ui, progress
    :priority: should
+   :release: v1.0
 
    Show progress during chunk creation
 
@@ -150,6 +157,7 @@ Pack Operation
    :status: approved
    :tags: transfer, pack, usb, ui
    :priority: should
+   :release: v1.0
 
    Prompt for USB swapping when multiple chunks needed
 
@@ -169,6 +177,7 @@ Unpack Operation
    :status: approved
    :tags: transfer, unpack, reconstruction
    :priority: must
+   :release: v1.0
 
    Reconstruct original files from chunks
 
@@ -177,6 +186,7 @@ Unpack Operation
    :status: approved
    :tags: transfer, unpack, verification, security
    :priority: must
+   :release: v1.0
 
    Verify chunk checksums before reconstruction
 
@@ -185,6 +195,7 @@ Unpack Operation
    :status: approved
    :tags: transfer, unpack, filesystem
    :priority: must
+   :release: v1.0
 
    Place reconstructed files in specified destination
 
@@ -193,6 +204,7 @@ Unpack Operation
    :status: approved
    :tags: transfer, unpack, validation
    :priority: must
+   :release: v1.0
 
    Validate chunk completeness (all chunks present)
 
@@ -201,6 +213,7 @@ Unpack Operation
    :status: approved
    :tags: transfer, unpack, resume, reliability
    :priority: should
+   :release: v1.0
 
    Resume partial unpacks if interrupted
 
@@ -209,6 +222,7 @@ Unpack Operation
    :status: approved
    :tags: transfer, unpack, cleanup
    :priority: should
+   :release: v1.0
 
    Optionally delete chunks after successful reconstruction
 
@@ -217,6 +231,7 @@ Unpack Operation
    :status: approved
    :tags: transfer, unpack, ui, progress
    :priority: should
+   :release: v1.0
 
    Show progress during reconstruction
 
@@ -236,6 +251,7 @@ List Operation
    :status: approved
    :tags: transfer, list, manifest
    :priority: must
+   :release: v1.0
 
    Display chunk inventory from manifest
 
@@ -244,6 +260,7 @@ List Operation
    :status: approved
    :tags: transfer, list, verification
    :priority: must
+   :release: v1.0
 
    Show chunk sizes and verification status
 
@@ -252,6 +269,7 @@ List Operation
    :status: approved
    :tags: transfer, list, validation
    :priority: should
+   :release: v1.0
 
    Identify missing or corrupted chunks
 
@@ -260,6 +278,7 @@ List Operation
    :status: approved
    :tags: transfer, list, ui
    :priority: should
+   :release: v1.0
 
    Display estimated total size after reconstruction
 
@@ -279,6 +298,7 @@ Integrity Verification
    :status: approved
    :tags: transfer, verification, checksum, security
    :priority: must
+   :release: v1.0
 
    Generate checksums during pack using the configured hash algorithm (default: SHA-256)
 
@@ -287,6 +307,7 @@ Integrity Verification
    :status: approved
    :tags: transfer, verification, checksum, security
    :priority: must
+   :release: v1.0
 
    Verify checksums during unpack
 
@@ -295,6 +316,7 @@ Integrity Verification
    :status: approved
    :tags: transfer, verification, error-handling
    :priority: must
+   :release: v1.0
 
    Detect corrupted chunks and report errors
 
@@ -303,6 +325,7 @@ Integrity Verification
    :status: approved
    :tags: transfer, verification, checksum, security
    :priority: should
+   :release: v1.0
 
    Verify final reconstructed file against original checksum
 
@@ -322,6 +345,7 @@ Cryptographic Agility
    :status: approved
    :tags: transfer, crypto-agility, security
    :priority: must
+   :release: v1.0
 
    The system SHALL allow users to select a hash algorithm via CLI flag (``--hash-algorithm``). Default: SHA-256.
 
@@ -330,6 +354,7 @@ Cryptographic Agility
    :status: approved
    :tags: transfer, crypto-agility, manifest, security
    :priority: must
+   :release: v1.0
 
    The manifest SHALL record which hash algorithm was used, so unpack can verify with the correct algorithm.
 
@@ -338,6 +363,7 @@ Cryptographic Agility
    :status: approved
    :tags: transfer, crypto-agility, security
    :priority: must
+   :release: v1.0
 
    The hash module SHALL use a trait-based interface so new algorithms can be added without modifying existing code.
 
@@ -357,6 +383,7 @@ State Management
    :status: approved
    :tags: transfer, state, manifest
    :priority: must
+   :release: v1.0
 
    Maintain operation state in manifest file
 
@@ -365,6 +392,7 @@ State Management
    :status: approved
    :tags: transfer, state, tracking
    :priority: must
+   :release: v1.0
 
    Track chunk completion status
 
@@ -373,6 +401,7 @@ State Management
    :status: approved
    :tags: transfer, state, resume, pack
    :priority: should
+   :release: v1.0
 
    Support resume for interrupted pack operations
 
@@ -381,6 +410,7 @@ State Management
    :status: approved
    :tags: transfer, state, resume, unpack
    :priority: should
+   :release: v1.0
 
    Support resume for interrupted unpack operations
 
@@ -400,6 +430,7 @@ Command Interface
    :status: approved
    :tags: transfer, cli, pack
    :priority: must
+   :release: v1.0
 
    ``airgap-transfer pack <source> <dest>`` command
 
@@ -408,6 +439,7 @@ Command Interface
    :status: approved
    :tags: transfer, cli, unpack
    :priority: must
+   :release: v1.0
 
    ``airgap-transfer unpack <source> <dest>`` command
 
@@ -416,6 +448,7 @@ Command Interface
    :status: approved
    :tags: transfer, cli, list
    :priority: must
+   :release: v1.0
 
    ``airgap-transfer list <chunk-location>`` command
 
@@ -424,6 +457,7 @@ Command Interface
    :status: approved
    :tags: transfer, cli, dry-run
    :priority: must
+   :release: v1.0
 
    ``--dry-run`` flag for all operations
 
@@ -432,6 +466,7 @@ Command Interface
    :status: approved
    :tags: transfer, cli, verification
    :priority: must
+   :release: v1.0
 
    ``--verify`` flag to enable/disable checksum verification
 
@@ -440,6 +475,7 @@ Command Interface
    :status: approved
    :tags: transfer, cli, configuration
    :priority: should
+   :release: v1.0
 
    ``--chunk-size`` flag for manual chunk size specification
 
@@ -448,6 +484,7 @@ Command Interface
    :status: approved
    :tags: transfer, cli, logging
    :priority: should
+   :release: v1.0
 
    ``--verbose`` flag for detailed output
 
@@ -467,6 +504,7 @@ Error Handling
    :status: approved
    :tags: transfer, error-handling, usb
    :priority: must
+   :release: v1.0
 
    Detect and report insufficient USB capacity
 
@@ -475,6 +513,7 @@ Error Handling
    :status: approved
    :tags: transfer, error-handling, chunks
    :priority: must
+   :release: v1.0
 
    Handle missing chunks gracefully
 
@@ -483,6 +522,7 @@ Error Handling
    :status: approved
    :tags: transfer, error-handling, usability
    :priority: must
+   :release: v1.0
 
    Provide clear error messages with suggested actions
 
@@ -502,6 +542,7 @@ Safety Features
    :status: approved
    :tags: transfer, safety, filesystem
    :priority: must
+   :release: v1.0
 
    Confirm overwrite of existing files
 
@@ -510,6 +551,7 @@ Safety Features
    :status: approved
    :tags: transfer, safety, validation
    :priority: must
+   :release: v1.0
 
    Validate destination paths and permissions
 
@@ -518,6 +560,7 @@ Safety Features
    :status: approved
    :tags: transfer, safety, usb
    :priority: must
+   :release: v1.0
 
    Safely sync USB before prompting for removal
 
@@ -526,6 +569,7 @@ Safety Features
    :status: approved
    :tags: transfer, safety, reliability
    :priority: should
+   :release: v1.0
 
    Atomic operations where possible
 
@@ -545,6 +589,7 @@ Deployment
    :status: approved
    :tags: transfer, deployment, offline
    :priority: must
+   :release: v1.0
 
    All dependencies available for offline build
 
@@ -553,6 +598,7 @@ Deployment
    :status: approved
    :tags: transfer, deployment, offline
    :priority: must
+   :release: v1.0
 
    Build process works without internet after initial setup
 
@@ -561,6 +607,7 @@ Deployment
    :status: approved
    :tags: transfer, deployment
    :priority: should
+   :release: v1.0
 
    Single, static binary deployment
 
@@ -583,6 +630,7 @@ Performance
    :status: approved
    :tags: transfer, performance
    :priority: should
+   :release: v1.0
 
    Chunk creation time < 10 minutes for 10GB dataset
 
@@ -591,6 +639,7 @@ Performance
    :status: approved
    :tags: transfer, performance, memory
    :priority: must
+   :release: v1.0
 
    Memory footprint < 100 MB during streaming operations
 
@@ -602,6 +651,7 @@ Reliability
    :status: approved
    :tags: transfer, reliability, integrity
    :priority: must
+   :release: v1.0
 
    The system SHALL verify all chunks using the hash algorithm specified in the manifest before reconstruction
 
@@ -610,6 +660,7 @@ Reliability
    :status: approved
    :tags: transfer, reliability
    :priority: must
+   :release: v1.0
 
    Pack and unpack operations SHALL be idempotent (safe to run multiple times)
 
@@ -618,6 +669,7 @@ Reliability
    :status: approved
    :tags: transfer, reliability, error-handling
    :priority: must
+   :release: v1.0
 
    The system SHALL handle interruptions gracefully (Ctrl+C, system shutdown) and allow resume
 
@@ -626,6 +678,7 @@ Reliability
    :status: approved
    :tags: transfer, reliability, integrity
    :priority: must
+   :release: v1.0
 
    The system SHALL detect and report data corruption via checksum mismatch
 
@@ -637,6 +690,7 @@ Usability
    :status: approved
    :tags: transfer, usability, ui
    :priority: must
+   :release: v1.0
 
    Progress indicators SHALL be shown for all operations taking longer than 2 seconds
 
@@ -645,6 +699,7 @@ Usability
    :status: approved
    :tags: transfer, usability, error-handling
    :priority: must
+   :release: v1.0
 
    Error messages SHALL include specific details about the failure and suggested fixes
 
@@ -653,6 +708,7 @@ Usability
    :status: approved
    :tags: transfer, usability, cli
    :priority: must
+   :release: v1.0
 
    The CLI SHALL provide help text accessible via --help for all commands
 
@@ -661,6 +717,7 @@ Usability
    :status: approved
    :tags: transfer, usability
    :priority: should
+   :release: v1.0
 
    First-time users SHALL be able to transfer a file within 5 minutes using provided examples
 
@@ -672,6 +729,7 @@ Maintainability
    :status: approved
    :tags: transfer, maintainability, testing
    :priority: must
+   :release: v1.0
 
    The codebase SHALL achieve at least 80% test coverage
 
@@ -680,6 +738,7 @@ Maintainability
    :status: approved
    :tags: transfer, maintainability, documentation
    :priority: must
+   :release: v1.0
 
    All public APIs SHALL have rustdoc documentation
 
@@ -688,6 +747,7 @@ Maintainability
    :status: approved
    :tags: transfer, maintainability, code-quality
    :priority: must
+   :release: v1.0
 
    The code SHALL pass cargo clippy with zero warnings
 
@@ -696,6 +756,7 @@ Maintainability
    :status: approved
    :tags: transfer, maintainability, code-quality
    :priority: must
+   :release: v1.0
 
    The code SHALL be formatted with rustfmt
 
@@ -707,6 +768,7 @@ Portability
    :status: approved
    :tags: transfer, portability
    :priority: must
+   :release: v1.0
 
    Support macOS, Windows, Linux
 
@@ -718,6 +780,7 @@ Scalability
    :status: approved
    :tags: transfer, scalability
    :priority: should
+   :release: v1.0
 
    The system SHALL handle files up to 100GB in size
 
@@ -726,6 +789,7 @@ Scalability
    :status: approved
    :tags: transfer, scalability, performance
    :priority: must
+   :release: v1.0
 
    Chunk operations SHALL use streaming architecture to handle files larger than available RAM
 
@@ -734,6 +798,7 @@ Scalability
    :status: approved
    :tags: transfer, scalability, performance
    :priority: could
+   :release: v1.0
 
    The system SHOULD support concurrent chunk verification to improve performance
 
@@ -745,6 +810,7 @@ Security & Privacy
    :status: approved
    :tags: transfer, privacy, security
    :priority: must
+   :release: v1.0
 
    All data stays on local/removable media; no network calls
 
@@ -753,6 +819,7 @@ Security & Privacy
    :status: approved
    :tags: transfer, security, crypto-agility
    :priority: must
+   :release: v1.0
 
    The system SHALL be designed for cryptographic agility: hash algorithms are pluggable via a common trait interface, enabling adoption of new standards (e.g., post-quantum algorithms) without architectural changes.
 
@@ -764,6 +831,7 @@ Deployment
    :status: approved
    :tags: transfer, offline
    :priority: must
+   :release: v1.0
 
    100% functional offline
 
@@ -772,8 +840,32 @@ Deployment
    :status: approved
    :tags: transfer, deployment, offline
    :priority: must
+   :release: v1.0
 
    Build and run on systems with no internet access
+
+v1.1 — SBOM-Aware Transfer Manifests
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The following requirements are planned for v1.1 and are not in scope for the MVP release.
+
+.. req:: Reference SBOM in Transfer Manifest
+   :id: FR-TRANSFER-048
+   :status: proposed
+   :tags: transfer, v1.1, sbom
+   :priority: could
+   :release: v1.1
+
+   When a CycloneDX SBOM file (``sbom.cdx.json``) is present among the files being transferred, the transfer manifest SHALL include an ``sbom`` field referencing the SBOM filename.
+
+.. req:: Log SBOM in Transfer Audit Trail
+   :id: FR-TRANSFER-049
+   :status: proposed
+   :tags: transfer, v1.1, sbom, audit
+   :priority: could
+   :release: v1.1
+
+   The system SHALL log the presence and filename of any SBOM file in the transfer audit trail, providing chain-of-custody documentation for compliance purposes.
 
 .. _error-handling-1:
 

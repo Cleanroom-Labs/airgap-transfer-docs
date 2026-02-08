@@ -8,3 +8,4 @@ Use Cases
    use-case-large-file
    use-case-large-directory
    use-case-multiple-usb
+   use-case-sbom-transfer

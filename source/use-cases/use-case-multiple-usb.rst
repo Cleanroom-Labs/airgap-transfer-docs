@@ -10,6 +10,7 @@ Transfer a large dataset (e.g., machine learning models, video collection) that 
    :id: UC-TRANSFER-003
    :status: approved
    :tags: transfer, workflow, multi-usb, swap
+   :release: v1.0
 
    Transfer large dataset (30GB) requiring multiple USB swaps with small capacity drives (4x 8GB USBs).
 
