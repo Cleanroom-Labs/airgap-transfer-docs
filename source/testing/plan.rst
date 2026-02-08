@@ -87,6 +87,7 @@ Pack Operation Tests
    :tags: transfer, pack, chunking
    :tests: FR-TRANSFER-001
    :priority: high
+   :release: v1.0
 
    Verify pack operation splits single file into chunks
 
@@ -96,6 +97,7 @@ Pack Operation Tests
    :tags: transfer, pack, directory
    :tests: FR-TRANSFER-001
    :priority: high
+   :release: v1.0
 
    Verify pack operation handles directory with multiple files
 
@@ -105,6 +107,7 @@ Pack Operation Tests
    :tags: transfer, pack, usb
    :tests: FR-TRANSFER-002
    :priority: high
+   :release: v1.0
 
    Verify automatic detection of USB drive capacity
 
@@ -114,6 +117,7 @@ Pack Operation Tests
    :tags: transfer, pack, checksum
    :tests: FR-TRANSFER-003
    :priority: high
+   :release: v1.0
 
    Verify checksums generated for each chunk using the configured hash algorithm
 
@@ -123,6 +127,7 @@ Pack Operation Tests
    :tags: transfer, pack, manifest
    :tests: FR-TRANSFER-004
    :priority: high
+   :release: v1.0
 
    Verify manifest file creation with chunk metadata
 
@@ -132,6 +137,7 @@ Pack Operation Tests
    :tags: transfer, pack, streaming
    :tests: FR-TRANSFER-005
    :priority: high
+   :release: v1.0
 
    Verify pack operation streams data without intermediate temp files
 
@@ -141,6 +147,7 @@ Pack Operation Tests
    :tags: transfer, pack, chunk-size
    :tests: FR-TRANSFER-006
    :priority: medium
+   :release: v1.0
 
    Verify manual chunk size override functionality
 
@@ -150,6 +157,7 @@ Pack Operation Tests
    :tags: transfer, pack, progress
    :tests: FR-TRANSFER-007
    :priority: medium
+   :release: v1.0
 
    Verify progress reporting during pack operation
 
@@ -159,6 +167,7 @@ Pack Operation Tests
    :tags: transfer, pack, usb, ui
    :tests: FR-TRANSFER-008
    :priority: medium
+   :release: v1.0
 
    Verify system prompts for USB swapping when multiple chunks needed
 
@@ -179,6 +188,7 @@ Unpack Operation Tests
    :tags: transfer, unpack, reconstruction
    :tests: FR-TRANSFER-009
    :priority: high
+   :release: v1.0
 
    Verify unpack reconstructs original files from chunks
 
@@ -188,6 +198,7 @@ Unpack Operation Tests
    :tags: transfer, unpack, checksum
    :tests: FR-TRANSFER-010
    :priority: high
+   :release: v1.0
 
    Verify chunk checksums before reconstruction
 
@@ -197,6 +208,7 @@ Unpack Operation Tests
    :tags: transfer, unpack, destination
    :tests: FR-TRANSFER-011
    :priority: high
+   :release: v1.0
 
    Verify files placed in correct destination directory
 
@@ -206,6 +218,7 @@ Unpack Operation Tests
    :tags: transfer, unpack, validation
    :tests: FR-TRANSFER-012
    :priority: high
+   :release: v1.0
 
    Verify all required chunks present before unpack
 
@@ -215,6 +228,7 @@ Unpack Operation Tests
    :tags: transfer, unpack, resume
    :tests: FR-TRANSFER-013
    :priority: medium
+   :release: v1.0
 
    Verify unpack can resume after interruption
 
@@ -224,6 +238,7 @@ Unpack Operation Tests
    :tags: transfer, unpack, cleanup
    :tests: FR-TRANSFER-014
    :priority: medium
+   :release: v1.0
 
    Verify optional chunk deletion after successful unpack
 
@@ -233,6 +248,7 @@ Unpack Operation Tests
    :tags: transfer, unpack, ui, progress
    :tests: FR-TRANSFER-015
    :priority: medium
+   :release: v1.0
 
    Verify progress reporting during file reconstruction
 
@@ -253,6 +269,7 @@ List Operation Tests
    :tags: transfer, list, inventory
    :tests: FR-TRANSFER-016
    :priority: high
+   :release: v1.0
 
    Verify list command displays all available chunks
 
@@ -262,6 +279,7 @@ List Operation Tests
    :tags: transfer, list, status
    :tests: FR-TRANSFER-017
    :priority: high
+   :release: v1.0
 
    Verify list shows chunk sizes and completion status
 
@@ -271,6 +289,7 @@ List Operation Tests
    :tags: transfer, list, missing
    :tests: FR-TRANSFER-018
    :priority: medium
+   :release: v1.0
 
    Verify list identifies missing chunks from manifest
 
@@ -280,6 +299,7 @@ List Operation Tests
    :tags: transfer, list, size
    :tests: FR-TRANSFER-019
    :priority: medium
+   :release: v1.0
 
    Verify list shows estimated total transfer size
 
@@ -300,6 +320,7 @@ Integrity Tests
    :tags: transfer, integrity, checksum
    :tests: FR-TRANSFER-020
    :priority: critical
+   :release: v1.0
 
    Verify checksums generated for all chunks using the configured hash algorithm
 
@@ -309,6 +330,7 @@ Integrity Tests
    :tags: transfer, integrity, verification
    :tests: FR-TRANSFER-021
    :priority: critical
+   :release: v1.0
 
    Verify checksums validated during unpack operation
 
@@ -318,6 +340,7 @@ Integrity Tests
    :tags: transfer, integrity, corruption
    :tests: FR-TRANSFER-022
    :priority: critical
+   :release: v1.0
 
    Verify corrupted chunks detected via checksum mismatch
 
@@ -327,6 +350,7 @@ Integrity Tests
    :tags: transfer, integrity, final
    :tests: FR-TRANSFER-023
    :priority: high
+   :release: v1.0
 
    Verify final reconstructed file integrity matches original
 
@@ -347,6 +371,7 @@ Cryptographic Agility Tests
    :tags: transfer, crypto-agility, cli
    :tests: FR-TRANSFER-045
    :priority: high
+   :release: v1.0
 
    **Preconditions:** Application built and available
 
@@ -365,6 +390,7 @@ Cryptographic Agility Tests
    :tags: transfer, crypto-agility, cli
    :tests: FR-TRANSFER-045
    :priority: high
+   :release: v1.0
 
    **Preconditions:** Application built and available
 
@@ -381,6 +407,7 @@ Cryptographic Agility Tests
    :tags: transfer, crypto-agility, manifest
    :tests: FR-TRANSFER-046
    :priority: high
+   :release: v1.0
 
    **Preconditions:** Pack completed with a non-default algorithm
 
@@ -399,6 +426,7 @@ Cryptographic Agility Tests
    :tags: transfer, crypto-agility, unpack
    :tests: FR-TRANSFER-046
    :priority: high
+   :release: v1.0
 
    **Preconditions:** Chunks packed with a non-default algorithm
 
@@ -416,6 +444,7 @@ Cryptographic Agility Tests
    :tags: transfer, crypto-agility, architecture
    :tests: FR-TRANSFER-047
    :priority: high
+   :release: v1.0
 
    **Preconditions:** Source code available
 
@@ -433,6 +462,7 @@ Cryptographic Agility Tests
    :tags: transfer, crypto-agility, error
    :tests: FR-TRANSFER-045
    :priority: medium
+   :release: v1.0
 
    **Preconditions:** Application built and available
 
@@ -460,6 +490,7 @@ State Management Tests
    :tags: transfer, state, persistence
    :tests: FR-TRANSFER-024
    :priority: high
+   :release: v1.0
 
    Verify operation state persisted to disk
 
@@ -469,6 +500,7 @@ State Management Tests
    :tags: transfer, state, tracking
    :tests: FR-TRANSFER-025
    :priority: high
+   :release: v1.0
 
    Verify chunk completion tracked in state file
 
@@ -478,6 +510,7 @@ State Management Tests
    :tags: transfer, state, resume, pack
    :tests: FR-TRANSFER-026
    :priority: medium
+   :release: v1.0
 
    Verify pack operation can resume after interruption
 
@@ -487,6 +520,7 @@ State Management Tests
    :tags: transfer, state, resume, unpack
    :tests: FR-TRANSFER-027
    :priority: medium
+   :release: v1.0
 
    Verify unpack operation can resume after interruption
 
@@ -507,6 +541,7 @@ Command Interface Tests
    :tags: transfer, cli, pack
    :tests: FR-TRANSFER-028
    :priority: high
+   :release: v1.0
 
    Verify pack command accepts correct syntax and arguments
 
@@ -516,6 +551,7 @@ Command Interface Tests
    :tags: transfer, cli, unpack
    :tests: FR-TRANSFER-029
    :priority: high
+   :release: v1.0
 
    Verify unpack command accepts correct syntax and arguments
 
@@ -525,6 +561,7 @@ Command Interface Tests
    :tags: transfer, cli, list
    :tests: FR-TRANSFER-030
    :priority: high
+   :release: v1.0
 
    Verify list command accepts correct syntax and arguments
 
@@ -534,6 +571,7 @@ Command Interface Tests
    :tags: transfer, cli, dry-run
    :tests: FR-TRANSFER-031
    :priority: high
+   :release: v1.0
 
    Verify dry-run mode previews operation without execution
 
@@ -543,6 +581,7 @@ Command Interface Tests
    :tags: transfer, cli, verify
    :tests: FR-TRANSFER-032
    :priority: high
+   :release: v1.0
 
    Verify --verify flag enables checksum verification
 
@@ -552,6 +591,7 @@ Command Interface Tests
    :tags: transfer, cli, configuration
    :tests: FR-TRANSFER-033
    :priority: medium
+   :release: v1.0
 
    Verify --chunk-size flag allows manual chunk size specification
 
@@ -561,6 +601,7 @@ Command Interface Tests
    :tags: transfer, cli, logging
    :tests: FR-TRANSFER-034
    :priority: medium
+   :release: v1.0
 
    Verify --verbose flag enables detailed output logging
 
@@ -581,6 +622,7 @@ Error Handling Tests
    :tags: transfer, error, usb
    :tests: FR-TRANSFER-035
    :priority: high
+   :release: v1.0
 
    Verify error when USB capacity insufficient for chunk
 
@@ -590,6 +632,7 @@ Error Handling Tests
    :tags: transfer, error, missing
    :tests: FR-TRANSFER-036
    :priority: high
+   :release: v1.0
 
    Verify error when required chunks missing during unpack
 
@@ -599,6 +642,7 @@ Error Handling Tests
    :tags: transfer, error, usability
    :tests: FR-TRANSFER-037
    :priority: high
+   :release: v1.0
 
    Verify all error messages clear and actionable
 
@@ -619,6 +663,7 @@ Safety Tests
    :tags: transfer, safety, overwrite
    :tests: FR-TRANSFER-038
    :priority: high
+   :release: v1.0
 
    Verify confirmation required before overwriting existing files
 
@@ -628,6 +673,7 @@ Safety Tests
    :tags: transfer, safety, validation
    :tests: FR-TRANSFER-039
    :priority: high
+   :release: v1.0
 
    Verify destination paths validated before write
 
@@ -637,6 +683,7 @@ Safety Tests
    :tags: transfer, safety, sync
    :tests: FR-TRANSFER-040
    :priority: high
+   :release: v1.0
 
    Verify USB synced before prompting for removal
 
@@ -646,6 +693,7 @@ Safety Tests
    :tags: transfer, safety, reliability
    :tests: FR-TRANSFER-041
    :priority: high
+   :release: v1.0
 
    Verify operations are atomic where possible (no partial state on failure)
 
@@ -658,6 +706,7 @@ Deployment Tests
    :tags: transfer, deployment, offline
    :tests: FR-TRANSFER-042
    :priority: critical
+   :release: v1.0
 
    Verify all dependencies available for offline build via cargo vendor
 
@@ -667,6 +716,7 @@ Deployment Tests
    :tags: transfer, deployment, offline
    :tests: FR-TRANSFER-043
    :priority: critical
+   :release: v1.0
 
    Verify build process works without internet after initial setup
 
@@ -676,6 +726,7 @@ Deployment Tests
    :tags: transfer, deployment
    :tests: FR-TRANSFER-044
    :priority: high
+   :release: v1.0
 
    Verify deployment produces single, static binary with no external dependencies
 
@@ -696,6 +747,7 @@ Non-Functional Tests
    :tags: transfer, performance, pack
    :tests: NFR-TRANSFER-001
    :priority: high
+   :release: v1.0
 
    Verify 10GB file packs in under 10 minutes
 
@@ -705,6 +757,7 @@ Non-Functional Tests
    :tags: transfer, performance, memory
    :tests: NFR-TRANSFER-002
    :priority: medium
+   :release: v1.0
 
    Verify memory usage stays under 100 MB during operations
 
@@ -714,6 +767,7 @@ Non-Functional Tests
    :tags: transfer, offline, privacy
    :tests: NFR-TRANSFER-004
    :priority: critical
+   :release: v1.0
 
    Verify 100% functionality with network disconnected
 
@@ -723,6 +777,7 @@ Non-Functional Tests
    :tags: transfer, portability, cross-platform
    :tests: NFR-TRANSFER-006
    :priority: high
+   :release: v1.0
 
    Verify functionality on Linux, macOS, Windows
 
@@ -732,6 +787,7 @@ Non-Functional Tests
    :tags: transfer, privacy, security
    :tests: NFR-TRANSFER-003
    :priority: critical
+   :release: v1.0
 
    Verify no network calls under any circumstance (monitor with network sniffer)
 
@@ -741,6 +797,7 @@ Non-Functional Tests
    :tags: transfer, deployment, offline
    :tests: NFR-TRANSFER-005
    :priority: critical
+   :release: v1.0
 
    Verify build and execution on air-gapped system with vendored dependencies
 
@@ -750,6 +807,7 @@ Non-Functional Tests
    :tags: transfer, reliability, integrity
    :tests: NFR-TRANSFER-007
    :priority: critical
+   :release: v1.0
 
    Verify all chunks verified with the manifest-specified hash algorithm before reconstruction
 
@@ -759,6 +817,7 @@ Non-Functional Tests
    :tags: transfer, reliability
    :tests: NFR-TRANSFER-008
    :priority: high
+   :release: v1.0
 
    Verify running pack operation multiple times produces same output without errors
 
@@ -768,6 +827,7 @@ Non-Functional Tests
    :tags: transfer, reliability, error-handling
    :tests: NFR-TRANSFER-009
    :priority: high
+   :release: v1.0
 
    Verify Ctrl+C during pack/unpack allows resume without data loss
 
@@ -777,6 +837,7 @@ Non-Functional Tests
    :tags: transfer, reliability, integrity
    :tests: NFR-TRANSFER-010
    :priority: critical
+   :release: v1.0
 
    Verify corrupted chunks detected via checksum mismatch with clear error message
 
@@ -786,6 +847,7 @@ Non-Functional Tests
    :tags: transfer, usability, ui
    :tests: NFR-TRANSFER-011
    :priority: medium
+   :release: v1.0
 
    Verify progress indicators shown for operations >2 seconds
 
@@ -795,6 +857,7 @@ Non-Functional Tests
    :tags: transfer, usability, error-handling
    :tests: NFR-TRANSFER-012
    :priority: high
+   :release: v1.0
 
    Verify error messages include failure details and suggested fixes
 
@@ -804,6 +867,7 @@ Non-Functional Tests
    :tags: transfer, usability, cli
    :tests: NFR-TRANSFER-013
    :priority: high
+   :release: v1.0
 
    Verify --help flag provides comprehensive help for all commands
 
@@ -813,6 +877,7 @@ Non-Functional Tests
    :tags: transfer, usability
    :tests: NFR-TRANSFER-014
    :priority: medium
+   :release: v1.0
 
    Verify new user can transfer file in <5 minutes using provided examples
 
@@ -822,6 +887,7 @@ Non-Functional Tests
    :tags: transfer, maintainability, testing
    :tests: NFR-TRANSFER-015
    :priority: high
+   :release: v1.0
 
    Verify codebase achieves ≥80% test coverage via cargo tarpaulin
 
@@ -831,6 +897,7 @@ Non-Functional Tests
    :tags: transfer, maintainability, documentation
    :tests: NFR-TRANSFER-016
    :priority: high
+   :release: v1.0
 
    Verify all public APIs have rustdoc documentation
 
@@ -840,6 +907,7 @@ Non-Functional Tests
    :tags: transfer, maintainability, code-quality
    :tests: NFR-TRANSFER-017
    :priority: high
+   :release: v1.0
 
    Verify cargo clippy passes with zero warnings
 
@@ -849,6 +917,7 @@ Non-Functional Tests
    :tags: transfer, maintainability, code-quality
    :tests: NFR-TRANSFER-018
    :priority: high
+   :release: v1.0
 
    Verify code formatted with rustfmt (cargo fmt --check)
 
@@ -858,6 +927,7 @@ Non-Functional Tests
    :tags: transfer, scalability
    :tests: NFR-TRANSFER-019
    :priority: medium
+   :release: v1.0
 
    Verify successful pack/unpack of 100GB file
 
@@ -867,6 +937,7 @@ Non-Functional Tests
    :tags: transfer, scalability, performance
    :tests: NFR-TRANSFER-020
    :priority: high
+   :release: v1.0
 
    Verify files larger than RAM handled via streaming (monitor memory usage)
 
@@ -876,6 +947,7 @@ Non-Functional Tests
    :tags: transfer, scalability, performance
    :tests: NFR-TRANSFER-021
    :priority: low
+   :release: v1.0
 
    Verify concurrent chunk verification improves performance
 
@@ -885,6 +957,7 @@ Non-Functional Tests
    :tags: transfer, security, crypto-agility
    :tests: NFR-TRANSFER-022
    :priority: high
+   :release: v1.0
 
    **Preconditions:** Source code and built binary available
 

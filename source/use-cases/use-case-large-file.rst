@@ -10,6 +10,7 @@ Transfer a single large file (e.g., 50GB VM image) across an air-gap using 16GB 
    :id: UC-TRANSFER-001
    :status: approved
    :tags: transfer, workflow, large-file, chunking
+   :release: v1.0
 
    Transfer a single large file (50GB VM image) across air-gap using multiple 16GB USB drives with automatic chunking.
 

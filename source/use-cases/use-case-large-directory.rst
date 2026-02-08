@@ -10,6 +10,7 @@ Transfer a large directory with mixed file sizes (e.g., software development env
    :id: UC-TRANSFER-002
    :status: approved
    :tags: transfer, workflow, directory, tar
+   :release: v1.0
 
    Transfer large directory with mixed file sizes (40GB, 50,000 files) across air-gap preserving structure and permissions.
 
