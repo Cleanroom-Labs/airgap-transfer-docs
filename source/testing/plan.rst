@@ -575,7 +575,7 @@ Command Interface Tests
 
    Verify dry-run mode previews operation without execution
 
-.. test:: Verify Flag
+.. test:: No-Verify Flag
    :id: TC-TRANSFER-CLI-005
    :status: approved
    :tags: transfer, cli, verify
@@ -583,7 +583,7 @@ Command Interface Tests
    :priority: high
    :release: v1.0
 
-   Verify --verify flag enables checksum verification
+   Verify that checksum verification is enabled by default and that the --no-verify flag disables it
 
 .. test:: Chunk Size Flag
    :id: TC-TRANSFER-CLI-006
@@ -974,13 +974,13 @@ Non-Functional Tests
 Test Procedures
 ---------------
 
-Offline Operation Test (TC-NFR-003)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Offline Operation Test (TC-TRANSFER-NFR-003)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **Preconditions:**
 
 - App installed
-- Network disconnected (airplane mode or air-gapped system)
+- Network disconnected (airplane mode or an air-gapped system)
 
 **Steps:**
 

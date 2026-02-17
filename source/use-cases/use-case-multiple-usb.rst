@@ -28,7 +28,7 @@ Prerequisites
 -------------
 
 - **Source machine:** Connected system with data to transfer
-- **Destination machine:** Air-gapped system
+- **Destination machine:** air-gapped system
 - **Transfer media:** Four 8GB USB drives (only have small USBs available)
 - **Dataset:** ``~/ml-models/`` (30GB total)
 

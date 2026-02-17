@@ -14,7 +14,7 @@ Transfer a single large file (e.g., 50GB VM image) across an air-gap using 16GB 
 
    Transfer a single large file (50GB VM image) across air-gap using multiple 16GB USB drives with automatic chunking.
 
-   **Pack:** Split file into chunks sized for USB capacity (3x 16GB + 1x 2GB), generate checksums, create manifest on each USB.
+   **Pack:** Split file into chunks sized for USB capacity (one chunk per USB: 3x 16GB + 1x 2GB across 4 USB drives), generate checksums, create manifest on each USB.
 
    **Transfer:** Physically move USB drives across air-gap boundary.
 
@@ -28,8 +28,8 @@ Prerequisites
 -------------
 
 - **Source machine:** Connected system with internet access
-- **Destination machine:** Air-gapped system
-- **Transfer media:** Three 16GB USB drives
+- **Destination machine:** air-gapped system
+- **Transfer media:** Four 16GB USB drives
 - **File:** ``vm-image.qcow2`` (50GB)
 
 --------------
@@ -67,7 +67,8 @@ Phase 1: Pack on Source Machine
 
 **Repeat for remaining chunks**
 
-   - USB #3 contains ``chunk_002.tar`` and ``chunk_003.tar``
+   - USB #3 contains ``chunk_002.tar`` (16GB)
+   - USB #4 contains ``chunk_003.tar`` (2GB)
    - All USBs contain copy of manifest: ``airgap-transfer-manifest.json``
 
 Phase 2: Physical Transfer
@@ -89,14 +90,14 @@ Phase 3: Unpack on Destination Machine
 
 **Connect all USB drives**
 
-   - Mount USB #1, #2, #3
+   - Mount USB #1, #2, #3, #4
    - All chunks now accessible
 
 **Execute unpack operation**
 
    .. code:: bash
 
-      airgap-transfer unpack /media/usb-drives ~/restored/ --verify
+      airgap-transfer unpack /media/usb-drives ~/restored/
 
    - Verifies checksums for all chunks
    - Reconstructs ``vm-image.qcow2``

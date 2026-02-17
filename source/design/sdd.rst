@@ -98,7 +98,7 @@ Manifest Structure
          "index": 0,
          "filename": "chunk_000.tar",
          "size_bytes": 1073741824,
-         "checksum_sha256": "abc123...",
+         "checksum": "sha256:abc123...",
          "status": "completed"
        }
      ],
@@ -140,7 +140,7 @@ CLI Parser (main.rs)
      unpack <source> <dest>    Reconstruct from chunks
      list <chunk-location>     Show chunk inventory
 
-**Global options:** ``--dry-run``, ``--verbose``, ``--verify``, ``--chunk-size``, ``--hash-algorithm``
+**Global options:** ``--dry-run``, ``--verbose``, ``--no-verify``, ``--chunk-size``, ``--hash-algorithm``
 
 Chunker (chunker.rs)
 ~~~~~~~~~~~~~~~~~~~~
@@ -290,7 +290,7 @@ Threat            Mitigation
 ================= ==========================================
 Data exfiltration No network crates in dependency tree
 Path traversal    Validate and sanitize all paths
-Checksum bypass   Mandatory verification (with –verify flag)
+Checksum bypass   Verification enabled by default (disable with --no-verify)
 Malicious chunks  Verify checksums before extraction
 ================= ==========================================
 

@@ -36,28 +36,32 @@ Chunker Module (``chunker``)
 - ``StreamingReader`` - Memory-efficient file reading
 
 
-Assembler Module (``assembler``)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Chunker Module — Reconstruction (``chunker``)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**Purpose:** Reconstruct files from chunks
+**Purpose:** Reconstruct files from chunks (the unpack side of ``chunker.rs``)
 
 **Key Components:**
 
-- ``Assembler`` - Main reassembly logic
 - ``ChunkReader`` - Read chunks from tar archives
-- ``FileWriter`` - Write reconstructed files
+- ``StreamingWriter`` - Memory-efficient file reconstruction
+- Reconstruction logic shares the streaming architecture with pack operations
+
+See :doc:`SDD <../design/sdd>` for the ``Chunker (chunker.rs)`` component design.
 
 
-Hash Module (``hash``)
-~~~~~~~~~~~~~~~~~~~~~~
+Verifier Module (``verifier``)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**Purpose:** SHA-256 checksum generation and verification
+**Purpose:** Cryptographic integrity verification with pluggable hash backends
 
 **Key Components:**
 
-- ``Hasher`` - SHA-256 computation
-- ``ChecksumVerifier`` - Verify chunk integrity
-- ``ManifestValidator`` - Validate manifest checksums
+- ``HashAlgorithm`` - Trait interface for pluggable hash backends
+- ``Sha256Backend`` - Default SHA-256 implementation
+- ``verify_chunk`` - Verify chunk checksum against manifest
+
+See :doc:`SDD <../design/sdd>` for the ``Verifier (verifier.rs)`` component design.
 
 
 Manifest Module (``manifest``)
