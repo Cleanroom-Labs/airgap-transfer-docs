@@ -42,7 +42,6 @@ Requirements, design, and test specifications need some minor adjustments and a 
 | Integrity | SHA-256 checksums for all operations |
 | Cryptographic agility | Configurable hash algorithm, trait-based backend |
 | Resume | Continue interrupted transfers |
-| Encryption | Encrypt chunks for secure transfer |
 | CLI | Command-line interface with options |
 
 ## Implementation Phases
@@ -169,11 +168,11 @@ Requirements, design, and test specifications need some minor adjustments and a 
 
 **Done when:** Files reconstructed match original, `airgap-transfer list` shows complete inventory.
 
-### Phase 6: Safety & Encryption
+### Phase 6: Safety & Validation
 
 **Target:** Suite Milestone 4
 
-**Goal:** Safety features and encryption support
+**Goal:** Safety features and deployment validation
 
 **Safety Features:**
 
@@ -182,20 +181,13 @@ Requirements, design, and test specifications need some minor adjustments and a 
 - [ ] Safely sync USB before prompting for removal
 - [ ] Atomic operations where possible
 
-**Encryption** (src/encryption.rs):
-
-- [ ] Encrypt chunks during pack operation
-- [ ] Decrypt chunks during unpack operation
-- [ ] Key management (passphrase-based)
-- [ ] Encryption algorithm selection
-
 **Deployment:**
 
 - [ ] Offline build dependencies (cargo vendor)
 - [ ] Internet-free build after initial setup
 - [ ] Static binary deployment target
 
-**Done when:** Encryption working end-to-end, safety features prevent accidental data loss.
+**Done when:** Safety features prevent accidental data loss, deployment pipeline validated.
 
 ### Phase 7: CLI Polish
 
@@ -210,7 +202,7 @@ Requirements, design, and test specifications need some minor adjustments and a 
 - [ ] Clear error messages with suggested actions
 - [ ] `--verbose` flag for detailed output
 - [ ] `--dry-run` flag for all operations
-- [ ] `--verify` flag to enable/disable checksum verification
+- [ ] `--no-verify` flag to disable checksum verification (verification on by default)
 - [ ] Comprehensive help text
 
 **Done when:** Ready for daily use without frustration.
@@ -227,7 +219,6 @@ Requirements, design, and test specifications need some minor adjustments and a 
 - [ ] Chunker logic (splitting, streaming)
 - [ ] Hash verification (SHA-256, pluggable backends)
 - [ ] Manifest management (state tracking, resume)
-- [ ] Encryption (encrypt/decrypt round-trip)
 
 **Integration Tests:**
 
@@ -261,7 +252,6 @@ MVP is complete when:
 - [ ] Pack 10GB dataset into chunks
 - [ ] Transfer chunks across air-gap (manual USB movement)
 - [ ] Unpack and verify integrity on destination
-- [ ] Encrypt and decrypt chunks end-to-end
 - [ ] Resume interrupted pack operation
 - [ ] List chunk inventory shows all expected chunks
 - [ ] All operations work offline
@@ -283,6 +273,12 @@ Defer all of this until after shipping:
 - Performance optimization
 
 ## After MVP
+
+**Post-MVP: Encryption** (deferred from MVP per SRS scope):
+- Encrypt chunks during pack operation
+- Decrypt chunks during unpack operation
+- Key management (passphrase-based)
+- Encryption algorithm selection
 
 **Compression & Performance:**
 - Compression support (gzip, zstd)

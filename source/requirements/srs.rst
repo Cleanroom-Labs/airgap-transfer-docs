@@ -41,7 +41,7 @@ Definitions
 +=======================+==================================================================+
 | Air-gap               | Physical separation between systems with no network connectivity |
 +-----------------------+------------------------------------------------------------------+
-| Chunk                 | A fixed-size portion of source data that fits on removable media |
+| Chunk                 | A fixed-size tar archive containing a portion of source data     |
 +-----------------------+------------------------------------------------------------------+
 | Pack                  | Operation to split source files into chunks                      |
 +-----------------------+------------------------------------------------------------------+
@@ -293,7 +293,7 @@ Integrity Verification
    :style: table
    :sort: id
 
-.. req:: Generate SHA-256 Checksums
+.. req:: Generate Checksums
    :id: FR-TRANSFER-020
    :status: approved
    :tags: transfer, verification, checksum, security
@@ -441,7 +441,7 @@ Command Interface
    :priority: must
    :release: v1.0
 
-   ``airgap-transfer unpack <source> <dest>`` command
+   ``airgap-transfer unpack <source> <dest>`` command. The ``<source>`` argument is a single directory path containing chunk files and the manifest. When chunks span multiple USB drives, the user connects drives sequentially and the tool prompts for swaps.
 
 .. req:: List Command
    :id: FR-TRANSFER-030
@@ -461,14 +461,14 @@ Command Interface
 
    ``--dry-run`` flag for all operations
 
-.. req:: Verify Flag
+.. req:: No-Verify Flag
    :id: FR-TRANSFER-032
    :status: approved
    :tags: transfer, cli, verification
    :priority: must
    :release: v1.0
 
-   ``--verify`` flag to enable/disable checksum verification
+   Checksum verification SHALL be enabled by default for all operations. The ``--no-verify`` flag SHALL disable verification. This ensures integrity checking is the default behavior per FR-TRANSFER-010.
 
 .. req:: Chunk Size Flag
    :id: FR-TRANSFER-033
@@ -898,20 +898,23 @@ Manifest Structure
 
    {
      "version": "1.0",
-     "source": "/path/to/source",
-     "total_size": 10737418240,
-     "chunk_size": 1073741824,
+     "operation": "pack",
+     "source_path": "/path/to/source",
+     "total_size_bytes": 10737418240,
+     "chunk_size_bytes": 1073741824,
+     "chunk_count": 10,
      "hash_algorithm": "sha256",
      "chunks": [
        {
          "index": 0,
          "filename": "chunk_000.tar",
-         "size": 1073741824,
+         "size_bytes": 1073741824,
          "checksum": "sha256:abc123...",
          "status": "completed"
        }
      ],
-     "created": "2026-01-04T12:00:00Z"
+     "created_utc": "2026-01-04T12:00:00Z",
+     "last_updated_utc": "2026-01-04T12:15:00Z"
    }
 
 The ``hash_algorithm`` field identifies which algorithm was used. The checksum value prefix (e.g., ``sha256:``) is redundant but kept for readability when inspecting manifests manually.

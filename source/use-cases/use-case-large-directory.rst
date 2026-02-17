@@ -28,7 +28,7 @@ Prerequisites
 -------------
 
 - **Source machine:** Development machine with internet
-- **Destination machine:** Air-gapped production system
+- **Destination machine:** air-gapped production system
 - **Transfer media:** Two 32GB USB drives
 - **Directory:** ``~/project/`` (40GB, 50,000 files)
 
@@ -86,7 +86,7 @@ Phase 3: Unpack on Destination Machine
 
    .. code:: bash
 
-      airgap-transfer unpack /media/usb-drives ~/restored-project/ --verify
+      airgap-transfer unpack /media/usb-drives ~/restored-project/
 
    - Verifies all chunk checksums
    - Extracts in order, preserving structure

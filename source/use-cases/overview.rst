@@ -13,7 +13,7 @@ IT Administrator
 ~~~~~~~~~~~~~~~~
 
 - **Needs:** Move deployment packages and updates to air-gapped servers
-- **Environment:** Air-gapped data centers, secure facilities
+- **Environment:** air-gapped data centers, secure facilities
 - **Priority:** Reliability, verification, clear progress reporting
 
 Data Scientist / Researcher
@@ -123,7 +123,7 @@ The following are explicitly NOT supported in MVP:
 +----------------------------------+-------------------------------------------+
 | Network transfer                 | Violates air-gap design principle         |
 +----------------------------------+-------------------------------------------+
-| Automatic USB detection/swapping | Hardware-dependent, defer to post-MVP     |
+| Automatic USB hot-swap detection | Hardware-dependent, defer to post-MVP     |
 +----------------------------------+-------------------------------------------+
 | Compression during transfer      | Adds complexity, defer to post-MVP        |
 +----------------------------------+-------------------------------------------+
