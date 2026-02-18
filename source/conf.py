@@ -12,6 +12,11 @@ from theme_config import *
 # Override default paths from theme_config.py for this project's layout
 html_static_path = ['../common/sphinx/_static']
 templates_path = ['../common/sphinx/_templates']
+
+# Standalone builds get a project-specific header (AirGap Transfer branding).
+# Website builds (no env var) use the common template (Cleanroom Labs header).
+if os.environ.get('STANDALONE_DOCS', '0') == '1':
+    templates_path.insert(0, '_templates')
 html_favicon = '../common/sphinx/_static/favicon.ico'
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 

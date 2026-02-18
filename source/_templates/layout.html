@@ -1,0 +1,155 @@
+{# ============================================================================
+   AirGap Transfer - Standalone Sphinx Layout Template
+
+   This template overrides the shared common/sphinx/_templates/layout.html
+   when STANDALONE_DOCS=1 is set. It replaces the "Cleanroom Labs" header
+   with an "AirGap Transfer" branded header and removes the About/Blog/Docs
+   navigation links.
+
+   When built as part of the website (no env var), the common template is
+   used instead, preserving the full website header.
+   ============================================================================ #}
+{# Extends the Read the Docs theme layout to add a top navigation bar #}
+{% extends "!layout.html" %}
+
+{% block extrahead %}
+{{ super() }}
+<link rel="icon" type="image/svg+xml" href="{{ pathto('_static/favicon.svg', 1) }}">
+<link rel="icon" type="image/png" sizes="96x96" href="{{ pathto('_static/favicon-96x96.png', 1) }}">
+<link rel="apple-touch-icon" sizes="180x180" href="{{ pathto('_static/apple-touch-icon.png', 1) }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+                  "text": {
+                            "secondary": "#d1d5db"
+                  },
+                  "emerald": {
+                            "DEFAULT": "#10b981",
+                            "light": "#34d399"
+                  },
+                  "slate": {
+                            "700": "#374151",
+                            "800": "#1f2937"
+                  }
+        }
+        }
+      }
+    }
+</script>
+<script defer src="{{ pathto('_static/version-switcher.js', 1) }}"></script>
+{% endblock %}
+
+{% block extrabody %}
+{%- set stage = docs_version_stage|default("stable") -%}
+{%- set ver = docs_version|default("dev") -%}
+<nav class="site-nav-bar">
+    <div class="site-nav-inner">
+        <div class="site-nav-links">
+            <a href="{{ pathto('index') }}" class="site-nav-logo">
+                <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" width="32" height="32">
+                  <circle cx="24" cy="24" r="20" stroke="#10b981" stroke-width="2.5" stroke-dasharray="4 3" opacity="0.4"/>
+                  <path d="M16 18L24 10L32 18" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M24 10V28" stroke="#10b981" stroke-width="2.5" stroke-linecap="round"/>
+                  <path d="M32 30L24 38L16 30" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M24 38V20" stroke="#10b981" stroke-width="2.5" stroke-linecap="round"/>
+                </svg>
+            </a>
+            <a href="{{ pathto('index') }}" class="nav-brand">AirGap Transfer</a>
+        </div>
+
+    </div>
+</nav>
+{%- if stage != "stable" -%}
+<div class="version-sub-bar">
+    <select id="version-select" data-current-version="{{ docs_version|default('dev') }}" class="version-switcher">
+        <option value="">{{ docs_version|default('dev') }}</option>
+    </select>
+    <span class="version-sub-bar__message version-sub-bar__message--{{ stage }}">
+        {%- if stage == "dev" -%}
+        Development documentation &mdash; may change at any time
+        {%- elif stage == "beta" -%}
+        Pre-release documentation for version {{ ver }}
+        {%- elif stage == "rc" -%}
+        Release candidate ({{ ver }}) &mdash; report issues before final release
+        {%- endif -%}
+    </span>
+</div>
+{%- endif -%}
+<button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle sidebar" title="Toggle sidebar (Alt+S)">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 12h18M3 6h18M3 18h18"/>
+    </svg>
+</button>
+<script>
+// Add body class when version sub-bar is present
+if (document.querySelector('.version-sub-bar')) {
+    document.body.classList.add('has-version-sub-bar');
+}
+
+// Replace home icons with per-project SVGs
+document.addEventListener('DOMContentLoaded', function() {
+    var sidebarSvg = '{{ project_home_icon_sidebar|default("")|safe }}';
+    var breadcrumbSvg = '{{ project_home_icon_breadcrumb|default("")|safe }}';
+    function injectIcon(selector, svg) {
+        if (!svg) return;
+        var icons = document.querySelectorAll(selector + ' .icon-home');
+        for (var i = 0; i < icons.length; i++) {
+            var el = icons[i];
+            var span = document.createElement('span');
+            span.className = 'project-home-icon';
+            span.textContent = '';
+            // SVG is a trusted server-side template variable, not user input
+            var temp = document.createElement('template');
+            temp.innerHTML = svg;
+            span.appendChild(temp.content);
+            el.insertBefore(span, el.firstChild);
+        }
+    }
+    injectIcon('.wy-side-nav-search', sidebarSvg);
+    injectIcon('.wy-breadcrumbs', breadcrumbSvg);
+});
+
+// Sidebar project ordering: Add data attributes for CSS ordering
+document.addEventListener('DOMContentLoaded', function() {
+    var links = document.querySelectorAll('.wy-menu-vertical li.toctree-l1 > a');
+    for (var i = 0; i < links.length; i++) {
+        var text = links[i].textContent.toLowerCase();
+        var li = links[i].parentElement;
+        if (text.includes('transfer')) li.dataset.project = 'transfer';
+        else if (text.includes('deploy')) li.dataset.project = 'deploy';
+        else if (text.includes('whisper')) li.dataset.project = 'whisper';
+    }
+});
+
+// Sidebar toggle functionality
+(function() {
+    var toggle = document.getElementById('sidebar-toggle');
+    var body = document.body;
+
+    // Load saved state
+    if (localStorage.getItem('sidebar-collapsed') === 'true') {
+        body.classList.add('sidebar-collapsed');
+    }
+
+    toggle.addEventListener('click', function() {
+        body.classList.toggle('sidebar-collapsed');
+        localStorage.setItem('sidebar-collapsed', body.classList.contains('sidebar-collapsed'));
+    });
+
+    // Keyboard shortcut: Alt+S
+    document.addEventListener('keydown', function(e) {
+        if (e.altKey && e.key === 's') {
+            e.preventDefault();
+            toggle.click();
+        }
+    });
+})();
+</script>
+{{ super() }}
+{% endblock %}
