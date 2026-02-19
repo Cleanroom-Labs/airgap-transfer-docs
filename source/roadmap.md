@@ -274,11 +274,32 @@ Defer all of this until after shipping:
 
 ## After MVP
 
-**Post-MVP: Encryption** (deferred from MVP per SRS scope):
-- Encrypt chunks during pack operation
-- Decrypt chunks during unpack operation
-- Key management (passphrase-based)
-- Encryption algorithm selection
+### v1.1 — SBOM-Aware Transfer Manifests
+
+- [ ] Reference CycloneDX SBOM in transfer manifest when present
+- [ ] Log SBOM presence in transfer audit trail
+
+### v1.2 — Authenticated Encryption (AEAD) for Chunks at Rest
+
+Addresses the USB interception threat: if a drive is lost or intercepted, chunk data
+should be unreadable and manifest tampering should be detectable.
+
+- [ ] Optional AEAD encryption of chunks via `--passphrase` / `--passphrase-file`
+- [ ] ChaCha20-Poly1305 default, trait-based pluggable AEAD backend
+- [ ] Argon2id key derivation from user passphrase (KDF params stored in manifest)
+- [ ] Unique nonce per chunk (nonce reuse = fatal error)
+- [ ] Manifest authentication via keyed MAC (HMAC-SHA256, KMAC, or BLAKE3 keyed)
+- [ ] Encryption metadata recorded in manifest (algorithm, KDF params, nonces, MAC)
+- [ ] Passphrase never written to disk/logs; zeroized after key derivation
+
+**Design notes:** AEAD chosen over separate encrypt-then-HMAC to eliminate composition
+errors. Digital signatures rejected — this is a closed-world scenario (same operator
+packs and unpacks) with no need for non-repudiation or third-party verification.
+Symmetric crypto is also inherently PQC-resilient (Grover's algorithm halves effective
+key strength; ChaCha20-Poly1305 with 256-bit keys retains ~128-bit security under
+quantum attack).
+
+### Future
 
 **Compression & Performance:**
 - Compression support (gzip, zstd)

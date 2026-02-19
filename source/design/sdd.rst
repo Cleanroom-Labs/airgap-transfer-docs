@@ -292,7 +292,28 @@ Data exfiltration No network crates in dependency tree
 Path traversal    Validate and sanitize all paths
 Checksum bypass   Verification enabled by default (disable with --no-verify)
 Malicious chunks  Verify checksums before extraction
+USB interception  v1.2: Optional AEAD encryption at rest (ChaCha20-Poly1305)
+Manifest tamper   v1.2: Keyed MAC authentication of manifest
 ================= ==========================================
+
+v1.2 Encryption Design (Planned)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The v1.0 checksum-based verification detects accidental corruption but does not protect
+against intentional tampering or unauthorized reading of intercepted USB media. v1.2
+introduces optional AEAD encryption (see :doc:`SRS v1.2 requirements <../requirements/srs>`)
+to address these threats.
+
+**Design principle:** Encryption is opt-in. When no passphrase is provided, behavior is
+identical to v1.0. This preserves the simple default workflow while enabling encryption
+for users with higher-security threat models.
+
+**Key architecture decisions:**
+
+- AEAD (not separate encrypt-then-MAC) to eliminate composition errors
+- Passphrase-based key derivation via Argon2id (no PKI infrastructure required)
+- Manifest remains human-readable JSON, authenticated via keyed MAC
+- Trait-based AEAD backend mirrors existing ``HashAlgorithm`` pattern
 
 Deployment
 ----------
