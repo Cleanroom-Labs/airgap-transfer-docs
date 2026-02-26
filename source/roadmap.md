@@ -22,11 +22,11 @@ Build an air-gap file transfer tool you can trust. Ship it. See what happens.
 
 ## Current Status
 
-**Phase:** Requirements Specified
+**Phase:** Implementation (Phases 1–7 complete, Phase 8 in progress)
 
-**Next:** Begin MVP implementation
+**Next:** Integration tests, CI/CD pipeline, resume capability, multi-USB swapping
 
-Requirements, design, and test specifications are complete and ready for implementation.
+Core MVP features are implemented and passing 49 unit tests with zero clippy warnings.
 
 <br>
 
@@ -54,25 +54,25 @@ Requirements, design, and test specifications are complete and ready for impleme
 
 **Project Setup:**
 
-- [ ] Create Cargo project with minimal dependencies
+- [x] Create Cargo project with minimal dependencies
 - [ ] Set up CI/CD (GitHub Actions)
 - [ ] Configure cargo-deny for license compliance
-- [ ] Add basic README, CONTRIBUTING.md
+- [x] Add basic README, CONTRIBUTING.md
 
 **Core Types** (src/core/):
 
-- [ ] Chunk — chunk metadata and I/O
-- [ ] Manifest — JSON manifest structure (using serde)
-- [ ] HashBackend — trait for pluggable hash algorithms
-- [ ] Error — unified error type (using thiserror)
+- [x] Chunk — chunk metadata and I/O
+- [x] Manifest — JSON manifest structure (using serde)
+- [x] HashBackend — trait for pluggable hash algorithms
+- [x] Error — unified error type (using thiserror)
 
 **CLI Skeleton** (src/cli.rs, src/main.rs):
 
-- [ ] Command parsing (using clap)
-- [ ] `airgap-transfer pack <source> <dest>` command stub
-- [ ] `airgap-transfer unpack <source> <dest>` command stub
-- [ ] `airgap-transfer list <chunk-location>` command stub
-- [ ] `--help` for all commands
+- [x] Command parsing (using clap)
+- [x] `airgap-transfer pack <source> <dest>` command stub
+- [x] `airgap-transfer unpack <source> <dest>` command stub
+- [x] `airgap-transfer list <chunk-location>` command stub
+- [x] `--help` for all commands
 
 **Done when:** Working CLI skeleton with command stubs, core type definitions, CI/CD pipeline running.
 
@@ -84,19 +84,19 @@ Requirements, design, and test specifications are complete and ready for impleme
 
 **Chunker** (src/chunker.rs):
 
-- [ ] Implement tar archive creation from source files/directories
-- [ ] Stream data in fixed-size blocks (streaming architecture, memory < 100MB)
-- [ ] Write chunks to specified destination
-- [ ] Handle final chunk (may be smaller)
+- [x] Implement tar archive creation from source files/directories
+- [x] Stream data in fixed-size blocks (streaming architecture, memory < 100MB)
+- [x] Write chunks to specified destination
+- [x] Handle final chunk (may be smaller)
 
 **USB Handling** (src/usb.rs):
 
-- [ ] Detect USB mount points (platform-specific)
-- [ ] Query available capacity
+- [x] Detect USB mount points (platform-specific)
+- [x] Query available capacity
 - [ ] Auto-calculate optimal chunk size based on USB capacity
-- [ ] Manual chunk size specification (`--chunk-size` flag)
+- [x] Manual chunk size specification (`--chunk-size` flag)
 - [ ] Prompt for USB swapping when multiple chunks needed
-- [ ] Sync filesystem before removal prompts
+- [x] Sync filesystem before removal prompts
 
 **Done when:** Can create chunk files from source directory, auto-detects USB capacity.
 
@@ -106,15 +106,15 @@ Requirements, design, and test specifications are complete and ready for impleme
 
 **Goal:** Pluggable hash verification with SHA-256 default
 
-**Hash Backend** (src/hash.rs):
+**Hash Backend** (src/verifier.rs):
 
-- [ ] Trait-based hash interface (pluggable backend)
-- [ ] SHA-256 implementation (default)
-- [ ] Configurable hash algorithm via `--hash-algorithm` CLI flag
-- [ ] Calculate checksum during chunk creation
-- [ ] Store checksums in manifest with algorithm identifier
-- [ ] Verify chunk checksums during unpack
-- [ ] Report verification failures with corrupted chunk identification
+- [x] Trait-based hash interface (pluggable backend)
+- [x] SHA-256 implementation (default)
+- [x] Configurable hash algorithm via `--hash-algorithm` CLI flag
+- [x] Calculate checksum during chunk creation
+- [x] Store checksums in manifest with algorithm identifier
+- [x] Verify chunk checksums during unpack
+- [x] Report verification failures with corrupted chunk identification
 - [ ] Verify final reconstructed file against original checksum
 
 **Done when:** Chunks are verified before unpacking, hash algorithm is configurable and recorded in manifest.
@@ -127,15 +127,15 @@ Requirements, design, and test specifications are complete and ready for impleme
 
 **Manifest Manager** (src/manifest.rs):
 
-- [ ] Create manifest structure (per SDD schema)
-- [ ] Write manifest during pack operation
-- [ ] Update chunk status as operations complete
-- [ ] Read manifest during unpack/list operations
-- [ ] Record hash algorithm in manifest
+- [x] Create manifest structure (per SDD schema)
+- [x] Write manifest during pack operation
+- [x] Update chunk status as operations complete
+- [x] Read manifest during unpack/list operations
+- [x] Record hash algorithm in manifest
 
-**Resume** (src/resume.rs):
+**Resume:**
 
-- [ ] Track completed chunks in manifest
+- [x] Track completed chunks in manifest
 - [ ] Skip already-completed chunks on resume
 - [ ] Handle partial chunk cleanup
 - [ ] Support resume for both pack and unpack
@@ -149,22 +149,22 @@ Requirements, design, and test specifications are complete and ready for impleme
 
 **Goal:** Reconstruct files and display inventory
 
-**Unpack Operation** (src/unpack.rs):
+**Unpack Operation** (src/commands/unpack.rs):
 
-- [ ] Read and validate manifest
-- [ ] Verify all chunks present (validate completeness)
-- [ ] Verify chunk checksums using manifest-specified algorithm
-- [ ] Extract chunks to destination
+- [x] Read and validate manifest
+- [x] Verify all chunks present (validate completeness)
+- [x] Verify chunk checksums using manifest-specified algorithm
+- [x] Extract chunks to destination
 - [ ] Verify final output integrity
-- [ ] Optionally delete chunks after successful reconstruction
+- [x] Optionally delete chunks after successful reconstruction
 
-**List Command** (src/list.rs):
+**List Command** (src/commands/list.rs):
 
-- [ ] Read manifest from chunk location
-- [ ] Display chunk count and sizes
-- [ ] Show verification status
-- [ ] Identify missing or corrupted chunks
-- [ ] Display estimated total size after reconstruction
+- [x] Read manifest from chunk location
+- [x] Display chunk count and sizes
+- [x] Show verification status
+- [x] Identify missing or corrupted chunks
+- [x] Display estimated total size after reconstruction
 
 **Done when:** Files reconstructed match original, `airgap-transfer list` shows complete inventory.
 
@@ -176,16 +176,16 @@ Requirements, design, and test specifications are complete and ready for impleme
 
 **Safety Features:**
 
-- [ ] Confirm overwrite of existing files
-- [ ] Validate destination paths and permissions
-- [ ] Safely sync USB before prompting for removal
+- [x] Confirm overwrite of existing files
+- [x] Validate destination paths and permissions
+- [x] Safely sync USB before prompting for removal
 - [ ] Atomic operations where possible
 
 **Deployment:**
 
-- [ ] Offline build dependencies (cargo vendor)
-- [ ] Internet-free build after initial setup
-- [ ] Static binary deployment target
+- [x] Offline build dependencies (cargo vendor)
+- [x] Internet-free build after initial setup
+- [x] Static binary deployment target
 
 **Done when:** Safety features prevent accidental data loss, deployment pipeline validated.
 
@@ -197,13 +197,13 @@ Requirements, design, and test specifications are complete and ready for impleme
 
 **User Experience:**
 
-- [ ] Colored output (using colored crate)
-- [ ] Progress bars for long operations (using indicatif)
-- [ ] Clear error messages with suggested actions
-- [ ] `--verbose` flag for detailed output
-- [ ] `--dry-run` flag for all operations
-- [ ] `--no-verify` flag to disable checksum verification (verification on by default)
-- [ ] Comprehensive help text
+- [x] Colored output (using colored crate)
+- [x] Progress bars for long operations (using indicatif)
+- [x] Clear error messages with suggested actions
+- [x] `--verbose` flag for detailed output
+- [x] `--dry-run` flag for pack operations
+- [x] `--no-verify` flag to disable checksum verification (verification on by default)
+- [x] Comprehensive help text
 
 **Done when:** Ready for daily use without frustration.
 
@@ -215,10 +215,10 @@ Requirements, design, and test specifications are complete and ready for impleme
 
 **Unit Tests:**
 
-- [ ] Core types (chunk, manifest, hash backend)
-- [ ] Chunker logic (splitting, streaming)
-- [ ] Hash verification (SHA-256, pluggable backends)
-- [ ] Manifest management (state tracking, resume)
+- [x] Core types (chunk, manifest, hash backend)
+- [x] Chunker logic (splitting, streaming)
+- [x] Hash verification (SHA-256, pluggable backends)
+- [x] Manifest management (state tracking)
 
 **Integration Tests:**
 
@@ -251,12 +251,12 @@ MVP is complete when:
 
 - [ ] Pack 10GB dataset into chunks
 - [ ] Transfer chunks across air-gap (manual USB movement)
-- [ ] Unpack and verify integrity on destination
+- [x] Unpack and verify integrity on destination
 - [ ] Resume interrupted pack operation
-- [ ] List chunk inventory shows all expected chunks
-- [ ] All operations work offline
+- [x] List chunk inventory shows all expected chunks
+- [x] All operations work offline
 - [ ] 80%+ code coverage
-- [ ] Zero clippy warnings
+- [x] Zero clippy warnings
 - [ ] All dependency licenses compatible with AGPL-3.0
 - [ ] Documentation covers all use cases
 - [ ] Use successfully for one week
@@ -333,3 +333,9 @@ quantum attack).
 | 2026-01-28 | Created specification and documentation |
 | 2026-01-31 | Updated roadmap to align with 6-milestone release plan |
 | 2026-02-16 | Requirements specified and ready for implementation |
+| 2026-02-22 | Core implementation: chunker, manifest, verifier, error types |
+| 2026-02-23 | Pack command with streaming, checksums, dry-run, space checks |
+| 2026-02-24 | Unpack command with verification, chunk cleanup, overwrite protection |
+| 2026-02-25 | List command with --verify, CLI polish, 49 unit tests passing |
+| 2026-02-25 | Updated requirements (FR-TRANSFER-056/057), clarified FR-038/017/018 |
+| 2026-02-25 | Updated roadmap to reflect implementation progress |
