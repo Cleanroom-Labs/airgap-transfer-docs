@@ -255,14 +255,14 @@ List Operation
 
    Display chunk inventory from manifest
 
-.. req:: Show Chunk Sizes and Status
+.. req:: Show Chunk Sizes and Manifest Status
    :id: FR-TRANSFER-017
    :status: approved
    :tags: transfer, list, verification
    :priority: must
    :release: v1.0
 
-   Show chunk sizes and verification status
+   Display each chunk's size and manifest status (pending, in_progress, completed, or failed) as recorded in the manifest. This does not perform live checksum verification.
 
 .. req:: Identify Missing Chunks
    :id: FR-TRANSFER-018
@@ -271,7 +271,7 @@ List Operation
    :priority: should
    :release: v1.0
 
-   Identify missing or corrupted chunks
+   Check file presence for each chunk listed in the manifest and flag missing files. Corruption detection requires ``--verify`` (FR-TRANSFER-057).
 
 .. req:: Display Estimated Total Size
    :id: FR-TRANSFER-019
@@ -281,6 +281,15 @@ List Operation
    :release: v1.0
 
    Display estimated total size after reconstruction
+
+.. req:: List Verify Flag
+   :id: FR-TRANSFER-057
+   :status: approved
+   :tags: transfer, list, validation, verification
+   :priority: should
+   :release: v1.0
+
+   ``--verify`` flag on the list command SHALL compute checksums for present chunks and compare against manifest values, reporting mismatches as corrupted.
 
 Integrity Verification
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -488,6 +497,15 @@ Command Interface
 
    ``--verbose`` flag for detailed output
 
+.. req:: Force Flag
+   :id: FR-TRANSFER-056
+   :status: approved
+   :tags: transfer, cli, safety
+   :priority: must
+   :release: v1.0
+
+   ``--force`` flag on pack and unpack commands to bypass overwrite protection (FR-TRANSFER-038).
+
 Error Handling
 ~~~~~~~~~~~~~~
 
@@ -537,14 +555,14 @@ Safety Features
    :style: table
    :sort: id
 
-.. req:: Confirm File Overwrite
+.. req:: Overwrite Protection
    :id: FR-TRANSFER-038
    :status: approved
    :tags: transfer, safety, filesystem
    :priority: must
    :release: v1.0
 
-   Confirm overwrite of existing files
+   The system SHALL abort with an error when the destination contains existing data: for pack, an existing manifest file; for unpack, a non-empty destination directory. The error message SHALL suggest ``--force`` to bypass this check.
 
 .. req:: Validate Destination Paths
    :id: FR-TRANSFER-039

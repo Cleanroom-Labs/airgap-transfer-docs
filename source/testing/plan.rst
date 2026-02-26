@@ -273,7 +273,7 @@ List Operation Tests
 
    Verify list command displays all available chunks
 
-.. test:: Show Chunk Sizes and Status
+.. test:: Show Chunk Sizes and Manifest Status
    :id: TC-LST-002
    :status: approved
    :tags: transfer, list, status
@@ -281,9 +281,9 @@ List Operation Tests
    :priority: high
    :release: v1.0
 
-   Verify list shows chunk sizes and completion status
+   Verify list displays each chunk's size and manifest status field without performing live checksum verification.
 
-.. test:: Identify Missing Chunks
+.. test:: Identify Missing Chunk Files
    :id: TC-LST-003
    :status: approved
    :tags: transfer, list, missing
@@ -291,7 +291,7 @@ List Operation Tests
    :priority: medium
    :release: v1.0
 
-   Verify list identifies missing chunks from manifest
+   Verify list flags chunks whose files are absent from disk, based on filesystem existence check only.
 
 .. test:: Show Estimated Total Size
    :id: TC-LST-004
@@ -302,6 +302,16 @@ List Operation Tests
    :release: v1.0
 
    Verify list shows estimated total transfer size
+
+.. test:: List Verify Flag Detects Corruption
+   :id: TC-LST-005
+   :status: approved
+   :tags: transfer, list, verification
+   :tests: FR-TRANSFER-057
+   :priority: medium
+   :release: v1.0
+
+   Verify ``list --verify`` computes checksums for present chunks and reports mismatches as corrupted.
 
 Integrity Tests
 ~~~~~~~~~~~~~~~
@@ -605,6 +615,16 @@ Command Interface Tests
 
    Verify --verbose flag enables detailed output logging
 
+.. test:: Force Flag Bypasses Overwrite Protection
+   :id: TC-TRANSFER-CLI-008
+   :status: approved
+   :tags: transfer, cli, safety
+   :tests: FR-TRANSFER-056
+   :priority: high
+   :release: v1.0
+
+   Verify ``--force`` on pack overwrites an existing manifest, and ``--force`` on unpack proceeds into a non-empty destination.
+
 Error Handling Tests
 ~~~~~~~~~~~~~~~~~~~~
 
@@ -657,7 +677,7 @@ Safety Tests
    :style: table
    :sort: id
 
-.. test:: Confirm File Overwrite
+.. test:: Overwrite Protection Aborts Without Force
    :id: TC-SAF-001
    :status: approved
    :tags: transfer, safety, overwrite
@@ -665,7 +685,7 @@ Safety Tests
    :priority: high
    :release: v1.0
 
-   Verify confirmation required before overwriting existing files
+   Verify pack aborts when destination contains an existing manifest, and unpack aborts when destination is non-empty. Both SHALL suggest ``--force`` in the error message.
 
 .. test:: Validate Destination Paths
    :id: TC-SAF-002
@@ -696,6 +716,16 @@ Safety Tests
    :release: v1.0
 
    Verify operations are atomic where possible (no partial state on failure)
+
+.. test:: Force Flag Overwrite Success
+   :id: TC-SAF-005
+   :status: approved
+   :tags: transfer, safety, overwrite
+   :tests: FR-TRANSFER-038
+   :priority: high
+   :release: v1.0
+
+   Verify pack and unpack succeed with ``--force`` in scenarios where they would otherwise abort.
 
 Deployment Tests
 ~~~~~~~~~~~~~~~~
