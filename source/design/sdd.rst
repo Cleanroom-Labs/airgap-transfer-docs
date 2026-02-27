@@ -67,9 +67,12 @@ Per `principles.md <../../principles.md>`__: **Flat structure, minimal modules**
    │   │   ├── unpack.rs    # Unpack operation implementation
    │   │   └── list.rs      # List operation implementation
    │   ├── chunker.rs       # Streaming chunk creation/reconstruction
-   │   ├── verifier.rs      # SHA-256 checksum operations
+   │   ├── error.rs         # Unified error type (thiserror)
    │   ├── manifest.rs      # Manifest file handling (JSON)
-   │   └── usb.rs           # USB detection and capacity checks
+   │   ├── progress.rs      # Progress tracking utilities (indicatif)
+   │   ├── prompt.rs        # User interaction and confirmation prompts
+   │   ├── usb.rs           # USB detection and capacity checks
+   │   └── verifier.rs      # Pluggable hash verification (HashAlgorithm trait)
    ├── Cargo.toml
    ├── vendor/              # Vendored dependencies (for air-gap builds)
    └── .cargo/
@@ -140,7 +143,7 @@ CLI Parser (main.rs)
      unpack <source> <dest>    Reconstruct from chunks
      list <chunk-location>     Show chunk inventory
 
-**Global options:** ``--dry-run``, ``--verbose``, ``--no-verify``, ``--chunk-size``, ``--hash-algorithm``
+**Global options:** ``--dry-run``, ``--verbose``, ``--no-verify``, ``--force``, ``--resume``, ``--chunk-size``, ``--hash-algorithm``
 
 Chunker (chunker.rs)
 ~~~~~~~~~~~~~~~~~~~~
@@ -278,7 +281,11 @@ See `Principles <https://cleanroomlabs.dev/docs/meta/principles.html>`_ for depe
 - serde_ / serde_json_ - Manifest serialization
 - sha2_ - SHA-256 checksums (default backend); trait interface supports additional backends
 - tar_ - Tar archive creation/extraction
-- Platform-specific filesystem libs (stdlib where possible)
+- chrono_ - UTC timestamps in manifest (``created_utc``, ``last_updated_utc``)
+- colored_ - Terminal color output
+- indicatif_ - Progress bars for long operations
+- libc_ - Platform-specific filesystem sync and USB detection (macOS/Linux)
+- thiserror_ - Derive-based error type implementation
 
 Security & Privacy
 ------------------
@@ -373,3 +380,8 @@ Windows     ``FlushFileBuffers`` API
 .. _serde_json: https://docs.rs/serde_json/latest/serde_json/
 .. _sha2: https://docs.rs/sha2/latest/sha2/
 .. _tar: https://docs.rs/tar/latest/tar/
+.. _chrono: https://docs.rs/chrono/latest/chrono/
+.. _colored: https://docs.rs/colored/latest/colored/
+.. _indicatif: https://docs.rs/indicatif/latest/indicatif/
+.. _libc: https://docs.rs/libc/latest/libc/
+.. _thiserror: https://docs.rs/thiserror/latest/thiserror/

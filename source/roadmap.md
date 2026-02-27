@@ -22,11 +22,11 @@ Build an air-gap file transfer tool you can trust. Ship it. See what happens.
 
 ## Current Status
 
-**Phase:** Implementation (Phases 1–7 complete, Phase 8 in progress)
+**Phase:** Implementation (Phases 1–8 mostly complete — documentation and large-file testing remain)
 
-**Next:** Integration tests, CI/CD pipeline, resume capability, multi-USB swapping
+**Next:** API docs, user guide, large-file integration testing, 80% coverage verification, multi-USB swapping
 
-Core MVP features are implemented and passing 49 unit tests with zero clippy warnings.
+Core MVP features are implemented and passing 49 unit tests with zero clippy warnings. CI/CD pipeline runs on Linux, macOS, and Windows. Integration tests cover roundtrip, error scenarios, and resume.
 
 <br>
 
@@ -55,8 +55,8 @@ Core MVP features are implemented and passing 49 unit tests with zero clippy war
 **Project Setup:**
 
 - [x] Create Cargo project with minimal dependencies
-- [ ] Set up CI/CD (GitHub Actions)
-- [ ] Configure cargo-deny for license compliance
+- [x] Set up CI/CD (GitHub Actions)
+- [x] Configure cargo-deny for license compliance
 - [x] Add basic README, CONTRIBUTING.md
 
 **Core Types** (src/core/):
@@ -222,11 +222,11 @@ Core MVP features are implemented and passing 49 unit tests with zero clippy war
 
 **Integration Tests:**
 
-- [ ] End-to-end: pack → transfer → unpack → verify
-- [ ] Multi-platform testing (Linux, macOS, Windows via CI)
-- [ ] Error scenarios (missing chunks, corrupted data, insufficient USB)
+- [x] End-to-end: pack → transfer → unpack → verify
+- [x] Multi-platform testing (Linux, macOS, Windows via CI)
+- [x] Error scenarios (missing chunks, corrupted data, insufficient USB)
 - [ ] Large file handling (multi-GB datasets)
-- [ ] Resume scenarios (interrupted pack, interrupted unpack)
+- [x] Resume scenarios (interrupted pack, interrupted unpack)
 
 **Documentation:**
 
@@ -237,10 +237,10 @@ Core MVP features are implemented and passing 49 unit tests with zero clippy war
 
 **CI/CD:**
 
-- [ ] Run tests on Linux, macOS, Windows
-- [ ] Clippy lints (deny warnings)
-- [ ] rustfmt checks
-- [ ] cargo-deny license checks
+- [x] Run tests on Linux, macOS, Windows
+- [x] Clippy lints (deny warnings)
+- [x] rustfmt checks
+- [x] cargo-deny license checks
 - [ ] Release automation (GitHub releases)
 
 **Done when:** 80%+ code coverage, complete documentation, working examples, CI/CD pipeline.
@@ -257,7 +257,7 @@ MVP is complete when:
 - [x] All operations work offline
 - [ ] 80%+ code coverage
 - [x] Zero clippy warnings
-- [ ] All dependency licenses compatible with AGPL-3.0
+- [x] All dependency licenses compatible with AGPL-3.0
 - [ ] Documentation covers all use cases
 - [ ] Use successfully for one week
 
@@ -339,3 +339,4 @@ quantum attack).
 | 2026-02-25 | List command with --verify, CLI polish, 49 unit tests passing |
 | 2026-02-25 | Updated requirements (FR-TRANSFER-056/057), clarified FR-038/017/018 |
 | 2026-02-25 | Updated roadmap to reflect implementation progress |
+| 2026-02-26 | Synced roadmap and SDD to reflect CI/CD, integration tests, and new source modules |
