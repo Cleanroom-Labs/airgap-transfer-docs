@@ -48,5 +48,4 @@ html_context = {
     'conf_py_path': '/source/',
 }
 setup_project_icon(project, html_context)
-setup_standalone_docs(project, html_context)
 setup_version_context(html_context)
