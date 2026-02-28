@@ -37,8 +37,11 @@ Field Technician
 - **Environment:** Industrial control systems, remote sites with limited USB capacity
 - **Priority:** Multi-USB coordination, simple CLI, error recovery
 
-Primary Use Cases
------------------
+Workflow Use Cases
+------------------
+
+Happy-path scenarios covering the core pack → transfer → unpack workflow
+across different data sizes and transfer configurations.
 
 Large File Transfer
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -82,6 +85,71 @@ Multiple USB Workflow
 - Resume with any available USB
 
 :doc:`Use Case: Multi-USB Dataset Transfer <use-case-multiple-usb>`
+
+SBOM Transfer *(v1.1)*
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+**Scenario:** Transfer a deployment package containing a CycloneDX SBOM, with automatic SBOM detection and audit trail logging.
+
+**Key Requirements:**
+
+- Detect SBOM in transfer manifest
+- Log SBOM presence in audit trail
+- Chain-of-custody documentation
+
+:doc:`Use Case: Transfer Deployment Package with SBOM <use-case-sbom-transfer>`
+
+Diagnostic & Operational Use Cases
+-----------------------------------
+
+Scenarios focused on inspection, verification, and pre-transfer checks —
+what operators do *before* committing to an unpack.
+
+Verify Transfer Integrity
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**Scenario:** Operator receives USB drives and inspects chunk inventory, checks checksums, and identifies missing or corrupted chunks before unpacking.
+
+**Key Requirements:**
+
+- Display chunk inventory and sizes
+- Identify missing chunks
+- Verify checksums against manifest
+
+:doc:`Use Case: Verify Transfer Integrity <use-case-verify-integrity>`
+
+Error Recovery & Safety Use Cases
+----------------------------------
+
+Scenarios covering what happens when things go wrong — interrupted
+operations, insufficient space, accidental overwrites — and how the
+tool helps operators recover safely.
+
+Recover from Transfer Failure
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**Scenario:** Pack or unpack is interrupted by insufficient USB space, power loss, or missing chunks. Operator uses resume to recover.
+
+**Key Requirements:**
+
+- Manifest-based state tracking
+- Resume from last completed chunk
+- Clear error messages with recovery hints
+
+:doc:`Use Case: Recover from Transfer Failure <use-case-error-recovery>`
+
+Protect Against Data Loss
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**Scenario:** Operator accidentally targets a directory with existing files. The tool's safety features prevent silent overwrites.
+
+**Key Requirements:**
+
+- Overwrite protection by default
+- Explicit ``--force`` opt-in
+- Safe USB synchronization before ejection
+
+:doc:`Use Case: Protect Against Data Loss <use-case-data-protection>`
 
 Common Requirements Across All Use Cases
 ----------------------------------------
@@ -127,7 +195,7 @@ The following are explicitly NOT supported in MVP:
 +----------------------------------+-------------------------------------------+
 | Compression during transfer      | Adds complexity, defer to post-MVP        |
 +----------------------------------+-------------------------------------------+
-| Encryption                       | Adds key management complexity, defer     |
+| Encryption                       | Planned for v1.2 (AEAD + key derivation)  |
 +----------------------------------+-------------------------------------------+
 
 Success Metrics

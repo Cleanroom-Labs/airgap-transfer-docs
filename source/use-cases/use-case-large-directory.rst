@@ -11,7 +11,7 @@ Transfer a large directory with mixed file sizes (e.g., software development env
    :status: approved
    :tags: transfer, workflow, directory, tar
    :release: v1.0
-   :links: FR-TRANSFER-001; FR-TRANSFER-004; FR-TRANSFER-009; FR-TRANSFER-011; FR-TRANSFER-012
+   :links: FR-TRANSFER-001; FR-TRANSFER-004; FR-TRANSFER-009; FR-TRANSFER-011; FR-TRANSFER-012; FR-TRANSFER-015; FR-TRANSFER-034
 
    Transfer large directory with mixed file sizes (40GB, 50,000 files) across air-gap preserving structure and permissions.
 
