@@ -12,6 +12,7 @@ Transfer an AirGap Deploy package that includes a CycloneDX SBOM across the air 
    :tags: transfer, v1.1, sbom, workflow
    :priority: could
    :release: v1.1
+   :links: FR-TRANSFER-048; FR-TRANSFER-049
 
    Transfer a deployment archive containing an SBOM file. AirGap Transfer detects the SBOM in the manifest and logs its presence in the audit trail, providing chain-of-custody documentation for the bill of materials.
 

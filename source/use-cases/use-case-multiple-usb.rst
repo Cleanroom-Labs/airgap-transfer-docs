@@ -11,6 +11,7 @@ Transfer a large dataset (e.g., machine learning models, video collection) that 
    :status: approved
    :tags: transfer, workflow, multi-usb, swap
    :release: v1.0
+   :links: FR-TRANSFER-002; FR-TRANSFER-006; FR-TRANSFER-008; FR-TRANSFER-012; FR-TRANSFER-013; FR-TRANSFER-026
 
    Transfer large dataset (30GB) requiring multiple USB swaps with small capacity drives (4x 8GB USBs).
 
