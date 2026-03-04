@@ -11,7 +11,7 @@ Transfer a large directory with mixed file sizes (e.g., software development env
    :status: approved
    :tags: transfer, workflow, directory, tar
    :release: v1.0
-   :links: FR-TRANSFER-001; FR-TRANSFER-004; FR-TRANSFER-009; FR-TRANSFER-011; FR-TRANSFER-012; FR-TRANSFER-015; FR-TRANSFER-034
+   :specifies: FR-TRANSFER-001; FR-TRANSFER-004; FR-TRANSFER-009; FR-TRANSFER-011; FR-TRANSFER-012; FR-TRANSFER-015; FR-TRANSFER-034
 
    Transfer large directory with mixed file sizes (40GB, 50,000 files) across air-gap preserving structure and permissions.
 
@@ -21,7 +21,7 @@ Transfer a large directory with mixed file sizes (e.g., software development env
 
    **Unpack:** Verify chunk checksums, extract in order preserving structure, verify final directory integrity and file count.
 
-   **Success Criteria:** All files present, directory structure preserved, file permissions maintained, all checksums verified, process takes < 30 minutes.
+   **Acceptance Criteria:** All files present, directory structure preserved, file permissions maintained, all checksums verified, process takes < 30 minutes.
 
 --------------
 
@@ -103,8 +103,8 @@ Phase 3: Unpack on Destination Machine
 
 --------------
 
-Success Criteria
-----------------
+Acceptance Criteria
+-------------------
 
 - ✅ All 50,000 files present
 - ✅ Directory structure preserved
@@ -142,10 +142,3 @@ Error Scenarios
 | “Partial directory”   | Interrupted pack               | Resume from manifest        |
 +-----------------------+--------------------------------+-----------------------------+
 
---------------
-
-Related Documents
------------------
-
-- :doc:`SRS <../requirements/srs>` - Directory handling requirements
-- :doc:`SDD <../design/sdd>` - Tar format and structure preservation

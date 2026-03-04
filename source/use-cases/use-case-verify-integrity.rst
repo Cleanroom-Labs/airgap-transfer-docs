@@ -11,7 +11,7 @@ An IT administrator receives USB drives from an air-gap transfer and needs to ve
    :status: approved
    :tags: transfer, diagnostic, list, verification
    :release: v1.0
-   :links: FR-TRANSFER-016; FR-TRANSFER-017; FR-TRANSFER-018; FR-TRANSFER-019; FR-TRANSFER-022; FR-TRANSFER-057
+   :specifies: FR-TRANSFER-016; FR-TRANSFER-017; FR-TRANSFER-018; FR-TRANSFER-019; FR-TRANSFER-022; FR-TRANSFER-057
 
    Verify completeness and integrity of a chunked transfer before unpacking.
 
@@ -21,7 +21,7 @@ An IT administrator receives USB drives from an air-gap transfer and needs to ve
 
    **Diagnose:** Identify missing or corrupted chunks. Request re-transfer of affected USBs from the source side.
 
-   **Success Criteria:** All chunks present, all checksums match, operator has confidence to proceed with unpack.
+   **Acceptance Criteria:** All chunks present, all checksums match, operator has confidence to proceed with unpack.
 
 --------------
 
@@ -90,8 +90,8 @@ The unpack operation will re-verify checksums before extraction (unless ``--no-v
 
 --------------
 
-Success Criteria
-----------------
+Acceptance Criteria
+-------------------
 
 - All chunks accounted for in the manifest
 - All checksums verified against manifest values
@@ -118,4 +118,3 @@ Related Documents
 
 - :doc:`Large File Transfer <use-case-large-file>` — Standard pack/unpack workflow
 - :doc:`Multi-USB Transfer <use-case-multiple-usb>` — Multi-drive verification
-- :doc:`SRS <../requirements/srs>` — List and verification requirements

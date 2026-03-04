@@ -1,5 +1,5 @@
-Software Design Document
-========================
+Design
+======
 
 Introduction
 ---------------
@@ -81,41 +81,9 @@ Per `principles.md <../../principles.md>`__: **Flat structure, minimal modules**
 Data Design
 -----------
 
-Manifest Structure
-~~~~~~~~~~~~~~~~~~
-
-**Single JSON file per transfer operation**
-
-.. code:: json
-
-   {
-     "version": "1.0",
-     "operation": "pack",
-     "source_path": "/path/to/source",
-     "total_size_bytes": 10737418240,
-     "chunk_size_bytes": 1073741824,
-     "hash_algorithm": "sha256",
-     "chunk_count": 10,
-     "chunks": [
-       {
-         "index": 0,
-         "filename": "chunk_000.tar",
-         "size_bytes": 1073741824,
-         "checksum": "sha256:abc123...",
-         "status": "completed"
-       }
-     ],
-     "created_utc": "2026-01-04T12:00:00Z",
-     "last_updated_utc": "2026-01-04T12:15:00Z"
-   }
-
-Chunk File Format
-~~~~~~~~~~~~~~~~~
-
-- **Format:** tar archive (standard Unix format)
-- **Naming:** ``chunk_XXX.tar`` (zero-padded, 3-digit index)
-- **Size:** Fixed size (except final chunk which may be smaller)
-- **Contents:** Raw file data, preserving directory structure
+See :ref:`Design Conventions <chunk-format-conventions>` in the
+Requirements for the canonical manifest schema and chunk naming
+convention.
 
 State Persistence
 ~~~~~~~~~~~~~~~~~
@@ -267,7 +235,9 @@ Unpack Operation
 Dependencies
 ---------------
 
-**Minimal crates:** Target ≤10 direct dependencies
+**10 direct runtime crates** (target ≤10). Dev-only dependencies
+(``assert_cmd``, ``predicates``, ``tempfile``) and transitive
+dependencies are excluded from this count.
 
 See `Principles <https://cleanroomlabs.dev/docs/meta/principles.html>`_ for dependency guidelines.
 
@@ -275,7 +245,7 @@ See `Principles <https://cleanroomlabs.dev/docs/meta/principles.html>`_ for depe
 
    <div style="margin-top: 1.5em;"></div>
 
-**Expected dependencies:**
+**Direct runtime dependencies:**
 
 - clap_ - CLI argument parsing
 - serde_ / serde_json_ - Manifest serialization

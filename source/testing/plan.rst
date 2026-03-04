@@ -1,71 +1,10 @@
-Test Plan
-=========
+Tests
+=====
 
 Introduction
 ------------
 
 This test plan covers MVP requirements (:need_count:`type=='req' and 'transfer' in tags` functional requirements, :need_count:`type=='nfreq' and 'transfer' in tags` non-functional requirements).
-
-Test Strategy
--------------
-
-Test Levels
-~~~~~~~~~~~
-
-=========== ====================== ======================
-Level       Scope                  Tools
-=========== ====================== ======================
-Unit        Individual functions   Rust ``#[test]``
-Integration Component interactions Rust integration tests
-System      End-to-end workflows   Manual testing
-=========== ====================== ======================
-
-Features Not Tested
-~~~~~~~~~~~~~~~~~~~
-
-===================== ===================
-Feature               Reason
-===================== ===================
-USB hardware failures External dependency
-Filesystem internals  Platform dependency
-Tar format compliance Third-party library
-===================== ===================
-
-Test Automation Approach
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-**MVP:** Manual testing primarily. Unit tests for core logic.
-
-**Unit tests (automatable):**
-
-=========== ========================================
-Component   What to Test
-=========== ========================================
-chunker.rs  Chunk size calculations, streaming logic
-verifier.rs Checksum generation and verification
-manifest.rs JSON serialization, state management
-=========== ========================================
-
-**Integration tests (partially automatable):**
-
-====================== ====================
-Test                   Automation Notes
-====================== ====================
-Pack + Unpack workflow Use temp directories
-Manifest persistence   In-memory filesystem
-Checksum verification  Known test vectors
-====================== ====================
-
-**System tests (manual only):**
-
-========================= ===================================
-Test                      Why Manual
-========================= ===================================
-USB detection             Requires physical USB hardware
-Cross-platform behavior   Requires multiple test machines
-Large file handling       Time-intensive, requires disk space
-Resume after interruption Requires manual interruption
-========================= ===================================
 
 Test Cases by Category
 ----------------------
@@ -85,7 +24,6 @@ Pack Operation Tests
    :id: TC-PCK-001
    :status: approved
    :tags: transfer, pack, chunking
-   :tests: FR-TRANSFER-001
    :priority: high
    :release: v1.0
 
@@ -95,7 +33,6 @@ Pack Operation Tests
    :id: TC-PCK-002
    :status: approved
    :tags: transfer, pack, directory
-   :tests: FR-TRANSFER-001
    :priority: high
    :release: v1.0
 
@@ -105,7 +42,6 @@ Pack Operation Tests
    :id: TC-PCK-003
    :status: approved
    :tags: transfer, pack, usb
-   :tests: FR-TRANSFER-002
    :priority: high
    :release: v1.0
 
@@ -115,7 +51,6 @@ Pack Operation Tests
    :id: TC-PCK-004
    :status: approved
    :tags: transfer, pack, checksum
-   :tests: FR-TRANSFER-003
    :priority: high
    :release: v1.0
 
@@ -125,7 +60,6 @@ Pack Operation Tests
    :id: TC-PCK-005
    :status: approved
    :tags: transfer, pack, manifest
-   :tests: FR-TRANSFER-004
    :priority: high
    :release: v1.0
 
@@ -135,7 +69,6 @@ Pack Operation Tests
    :id: TC-PCK-006
    :status: approved
    :tags: transfer, pack, streaming
-   :tests: FR-TRANSFER-005
    :priority: high
    :release: v1.0
 
@@ -145,7 +78,6 @@ Pack Operation Tests
    :id: TC-PCK-007
    :status: approved
    :tags: transfer, pack, chunk-size
-   :tests: FR-TRANSFER-006
    :priority: medium
    :release: v1.0
 
@@ -155,7 +87,6 @@ Pack Operation Tests
    :id: TC-PCK-008
    :status: approved
    :tags: transfer, pack, progress
-   :tests: FR-TRANSFER-007
    :priority: medium
    :release: v1.0
 
@@ -165,7 +96,6 @@ Pack Operation Tests
    :id: TC-PCK-009
    :status: approved
    :tags: transfer, pack, usb, ui
-   :tests: FR-TRANSFER-008
    :priority: medium
    :release: v1.0
 
@@ -186,7 +116,6 @@ Unpack Operation Tests
    :id: TC-UNP-001
    :status: approved
    :tags: transfer, unpack, reconstruction
-   :tests: FR-TRANSFER-009
    :priority: high
    :release: v1.0
 
@@ -196,7 +125,6 @@ Unpack Operation Tests
    :id: TC-UNP-002
    :status: approved
    :tags: transfer, unpack, checksum
-   :tests: FR-TRANSFER-010
    :priority: high
    :release: v1.0
 
@@ -206,7 +134,6 @@ Unpack Operation Tests
    :id: TC-UNP-003
    :status: approved
    :tags: transfer, unpack, destination
-   :tests: FR-TRANSFER-011
    :priority: high
    :release: v1.0
 
@@ -216,7 +143,6 @@ Unpack Operation Tests
    :id: TC-UNP-004
    :status: approved
    :tags: transfer, unpack, validation
-   :tests: FR-TRANSFER-012
    :priority: high
    :release: v1.0
 
@@ -226,7 +152,6 @@ Unpack Operation Tests
    :id: TC-UNP-005
    :status: approved
    :tags: transfer, unpack, resume
-   :tests: FR-TRANSFER-013
    :priority: medium
    :release: v1.0
 
@@ -236,7 +161,6 @@ Unpack Operation Tests
    :id: TC-UNP-006
    :status: approved
    :tags: transfer, unpack, cleanup
-   :tests: FR-TRANSFER-014
    :priority: medium
    :release: v1.0
 
@@ -246,7 +170,6 @@ Unpack Operation Tests
    :id: TC-UNP-007
    :status: approved
    :tags: transfer, unpack, ui, progress
-   :tests: FR-TRANSFER-015
    :priority: medium
    :release: v1.0
 
@@ -267,7 +190,6 @@ List Operation Tests
    :id: TC-LST-001
    :status: approved
    :tags: transfer, list, inventory
-   :tests: FR-TRANSFER-016
    :priority: high
    :release: v1.0
 
@@ -277,7 +199,6 @@ List Operation Tests
    :id: TC-LST-002
    :status: approved
    :tags: transfer, list, status
-   :tests: FR-TRANSFER-017
    :priority: high
    :release: v1.0
 
@@ -287,7 +208,6 @@ List Operation Tests
    :id: TC-LST-003
    :status: approved
    :tags: transfer, list, missing
-   :tests: FR-TRANSFER-018
    :priority: medium
    :release: v1.0
 
@@ -297,7 +217,6 @@ List Operation Tests
    :id: TC-LST-004
    :status: approved
    :tags: transfer, list, size
-   :tests: FR-TRANSFER-019
    :priority: medium
    :release: v1.0
 
@@ -307,7 +226,6 @@ List Operation Tests
    :id: TC-LST-005
    :status: approved
    :tags: transfer, list, verification
-   :tests: FR-TRANSFER-057
    :priority: medium
    :release: v1.0
 
@@ -328,7 +246,6 @@ Integrity Tests
    :id: TC-INT-001
    :status: approved
    :tags: transfer, integrity, checksum
-   :tests: FR-TRANSFER-020
    :priority: critical
    :release: v1.0
 
@@ -338,7 +255,6 @@ Integrity Tests
    :id: TC-INT-002
    :status: approved
    :tags: transfer, integrity, verification
-   :tests: FR-TRANSFER-021
    :priority: critical
    :release: v1.0
 
@@ -348,7 +264,6 @@ Integrity Tests
    :id: TC-INT-003
    :status: approved
    :tags: transfer, integrity, corruption
-   :tests: FR-TRANSFER-022
    :priority: critical
    :release: v1.0
 
@@ -358,7 +273,6 @@ Integrity Tests
    :id: TC-INT-004
    :status: approved
    :tags: transfer, integrity, final
-   :tests: FR-TRANSFER-023
    :priority: high
    :release: v1.0
 
@@ -379,7 +293,6 @@ Cryptographic Agility Tests
    :id: TC-CRA-001
    :status: approved
    :tags: transfer, crypto-agility, cli
-   :tests: FR-TRANSFER-045
    :priority: high
    :release: v1.0
 
@@ -398,7 +311,6 @@ Cryptographic Agility Tests
    :id: TC-CRA-002
    :status: approved
    :tags: transfer, crypto-agility, cli
-   :tests: FR-TRANSFER-045
    :priority: high
    :release: v1.0
 
@@ -415,7 +327,6 @@ Cryptographic Agility Tests
    :id: TC-CRA-003
    :status: approved
    :tags: transfer, crypto-agility, manifest
-   :tests: FR-TRANSFER-046
    :priority: high
    :release: v1.0
 
@@ -434,7 +345,6 @@ Cryptographic Agility Tests
    :id: TC-CRA-004
    :status: approved
    :tags: transfer, crypto-agility, unpack
-   :tests: FR-TRANSFER-046
    :priority: high
    :release: v1.0
 
@@ -452,7 +362,6 @@ Cryptographic Agility Tests
    :id: TC-CRA-005
    :status: approved
    :tags: transfer, crypto-agility, architecture
-   :tests: FR-TRANSFER-047
    :priority: high
    :release: v1.0
 
@@ -470,7 +379,6 @@ Cryptographic Agility Tests
    :id: TC-CRA-006
    :status: approved
    :tags: transfer, crypto-agility, error
-   :tests: FR-TRANSFER-045
    :priority: medium
    :release: v1.0
 
@@ -498,7 +406,6 @@ State Management Tests
    :id: TC-STA-001
    :status: approved
    :tags: transfer, state, persistence
-   :tests: FR-TRANSFER-024
    :priority: high
    :release: v1.0
 
@@ -508,7 +415,6 @@ State Management Tests
    :id: TC-STA-002
    :status: approved
    :tags: transfer, state, tracking
-   :tests: FR-TRANSFER-025
    :priority: high
    :release: v1.0
 
@@ -518,7 +424,6 @@ State Management Tests
    :id: TC-STA-003
    :status: approved
    :tags: transfer, state, resume, pack
-   :tests: FR-TRANSFER-026
    :priority: medium
    :release: v1.0
 
@@ -528,7 +433,6 @@ State Management Tests
    :id: TC-STA-004
    :status: approved
    :tags: transfer, state, resume, unpack
-   :tests: FR-TRANSFER-027
    :priority: medium
    :release: v1.0
 
@@ -549,7 +453,6 @@ Command Interface Tests
    :id: TC-TRANSFER-CLI-001
    :status: approved
    :tags: transfer, cli, pack
-   :tests: FR-TRANSFER-028
    :priority: high
    :release: v1.0
 
@@ -559,7 +462,6 @@ Command Interface Tests
    :id: TC-TRANSFER-CLI-002
    :status: approved
    :tags: transfer, cli, unpack
-   :tests: FR-TRANSFER-029
    :priority: high
    :release: v1.0
 
@@ -569,7 +471,6 @@ Command Interface Tests
    :id: TC-TRANSFER-CLI-003
    :status: approved
    :tags: transfer, cli, list
-   :tests: FR-TRANSFER-030
    :priority: high
    :release: v1.0
 
@@ -579,7 +480,6 @@ Command Interface Tests
    :id: TC-TRANSFER-CLI-004
    :status: approved
    :tags: transfer, cli, dry-run
-   :tests: FR-TRANSFER-031
    :priority: high
    :release: v1.0
 
@@ -589,7 +489,6 @@ Command Interface Tests
    :id: TC-TRANSFER-CLI-005
    :status: approved
    :tags: transfer, cli, verify
-   :tests: FR-TRANSFER-032
    :priority: high
    :release: v1.0
 
@@ -599,7 +498,6 @@ Command Interface Tests
    :id: TC-TRANSFER-CLI-006
    :status: approved
    :tags: transfer, cli, configuration
-   :tests: FR-TRANSFER-033
    :priority: medium
    :release: v1.0
 
@@ -609,7 +507,6 @@ Command Interface Tests
    :id: TC-TRANSFER-CLI-007
    :status: approved
    :tags: transfer, cli, logging
-   :tests: FR-TRANSFER-034
    :priority: medium
    :release: v1.0
 
@@ -619,7 +516,6 @@ Command Interface Tests
    :id: TC-TRANSFER-CLI-008
    :status: approved
    :tags: transfer, cli, safety
-   :tests: FR-TRANSFER-056
    :priority: high
    :release: v1.0
 
@@ -640,7 +536,6 @@ Error Handling Tests
    :id: TC-TRANSFER-ERR-001
    :status: approved
    :tags: transfer, error, usb
-   :tests: FR-TRANSFER-035
    :priority: high
    :release: v1.0
 
@@ -650,7 +545,6 @@ Error Handling Tests
    :id: TC-TRANSFER-ERR-002
    :status: approved
    :tags: transfer, error, missing
-   :tests: FR-TRANSFER-036
    :priority: high
    :release: v1.0
 
@@ -660,7 +554,6 @@ Error Handling Tests
    :id: TC-TRANSFER-ERR-003
    :status: approved
    :tags: transfer, error, usability
-   :tests: FR-TRANSFER-037
    :priority: high
    :release: v1.0
 
@@ -681,7 +574,6 @@ Safety Tests
    :id: TC-SAF-001
    :status: approved
    :tags: transfer, safety, overwrite
-   :tests: FR-TRANSFER-038
    :priority: high
    :release: v1.0
 
@@ -691,7 +583,6 @@ Safety Tests
    :id: TC-SAF-002
    :status: approved
    :tags: transfer, safety, validation
-   :tests: FR-TRANSFER-039
    :priority: high
    :release: v1.0
 
@@ -701,7 +592,6 @@ Safety Tests
    :id: TC-SAF-003
    :status: approved
    :tags: transfer, safety, sync
-   :tests: FR-TRANSFER-040
    :priority: high
    :release: v1.0
 
@@ -711,7 +601,6 @@ Safety Tests
    :id: TC-SAF-004
    :status: approved
    :tags: transfer, safety, reliability
-   :tests: FR-TRANSFER-041
    :priority: high
    :release: v1.0
 
@@ -721,7 +610,6 @@ Safety Tests
    :id: TC-SAF-005
    :status: approved
    :tags: transfer, safety, overwrite
-   :tests: FR-TRANSFER-038
    :priority: high
    :release: v1.0
 
@@ -734,7 +622,6 @@ Deployment Tests
    :id: TC-TRANSFER-DEP-001
    :status: approved
    :tags: transfer, deployment, offline
-   :tests: FR-TRANSFER-042
    :priority: critical
    :release: v1.0
 
@@ -744,7 +631,6 @@ Deployment Tests
    :id: TC-TRANSFER-DEP-002
    :status: approved
    :tags: transfer, deployment, offline
-   :tests: FR-TRANSFER-043
    :priority: critical
    :release: v1.0
 
@@ -754,7 +640,6 @@ Deployment Tests
    :id: TC-TRANSFER-DEP-003
    :status: approved
    :tags: transfer, deployment
-   :tests: FR-TRANSFER-044
    :priority: high
    :release: v1.0
 
@@ -775,7 +660,6 @@ Non-Functional Tests
    :id: TC-TRANSFER-NFR-001
    :status: approved
    :tags: transfer, performance, pack
-   :tests: NFR-TRANSFER-001
    :priority: high
    :release: v1.0
 
@@ -785,7 +669,6 @@ Non-Functional Tests
    :id: TC-TRANSFER-NFR-002
    :status: approved
    :tags: transfer, performance, memory
-   :tests: NFR-TRANSFER-002
    :priority: medium
    :release: v1.0
 
@@ -795,7 +678,6 @@ Non-Functional Tests
    :id: TC-TRANSFER-NFR-003
    :status: approved
    :tags: transfer, offline, privacy
-   :tests: NFR-TRANSFER-004
    :priority: critical
    :release: v1.0
 
@@ -805,7 +687,6 @@ Non-Functional Tests
    :id: TC-TRANSFER-NFR-004
    :status: approved
    :tags: transfer, portability, cross-platform
-   :tests: NFR-TRANSFER-006
    :priority: high
    :release: v1.0
 
@@ -815,7 +696,6 @@ Non-Functional Tests
    :id: TC-TRANSFER-NFR-005
    :status: approved
    :tags: transfer, privacy, security
-   :tests: NFR-TRANSFER-003
    :priority: critical
    :release: v1.0
 
@@ -825,7 +705,6 @@ Non-Functional Tests
    :id: TC-TRANSFER-NFR-006
    :status: approved
    :tags: transfer, deployment, offline
-   :tests: NFR-TRANSFER-005
    :priority: critical
    :release: v1.0
 
@@ -835,7 +714,6 @@ Non-Functional Tests
    :id: TC-TRANSFER-NFR-007
    :status: approved
    :tags: transfer, reliability, integrity
-   :tests: NFR-TRANSFER-007
    :priority: critical
    :release: v1.0
 
@@ -845,7 +723,6 @@ Non-Functional Tests
    :id: TC-TRANSFER-NFR-008
    :status: approved
    :tags: transfer, reliability
-   :tests: NFR-TRANSFER-008
    :priority: high
    :release: v1.0
 
@@ -855,7 +732,6 @@ Non-Functional Tests
    :id: TC-TRANSFER-NFR-009
    :status: approved
    :tags: transfer, reliability, error-handling
-   :tests: NFR-TRANSFER-009
    :priority: high
    :release: v1.0
 
@@ -865,7 +741,6 @@ Non-Functional Tests
    :id: TC-TRANSFER-NFR-010
    :status: approved
    :tags: transfer, reliability, integrity
-   :tests: NFR-TRANSFER-010
    :priority: critical
    :release: v1.0
 
@@ -875,7 +750,6 @@ Non-Functional Tests
    :id: TC-TRANSFER-NFR-011
    :status: approved
    :tags: transfer, usability, ui
-   :tests: NFR-TRANSFER-011
    :priority: medium
    :release: v1.0
 
@@ -885,7 +759,6 @@ Non-Functional Tests
    :id: TC-TRANSFER-NFR-012
    :status: approved
    :tags: transfer, usability, error-handling
-   :tests: NFR-TRANSFER-012
    :priority: high
    :release: v1.0
 
@@ -895,7 +768,6 @@ Non-Functional Tests
    :id: TC-TRANSFER-NFR-013
    :status: approved
    :tags: transfer, usability, cli
-   :tests: NFR-TRANSFER-013
    :priority: high
    :release: v1.0
 
@@ -905,7 +777,6 @@ Non-Functional Tests
    :id: TC-TRANSFER-NFR-014
    :status: approved
    :tags: transfer, usability
-   :tests: NFR-TRANSFER-014
    :priority: medium
    :release: v1.0
 
@@ -915,7 +786,6 @@ Non-Functional Tests
    :id: TC-TRANSFER-NFR-015
    :status: approved
    :tags: transfer, maintainability, testing
-   :tests: NFR-TRANSFER-015
    :priority: high
    :release: v1.0
 
@@ -925,7 +795,6 @@ Non-Functional Tests
    :id: TC-TRANSFER-NFR-016
    :status: approved
    :tags: transfer, maintainability, documentation
-   :tests: NFR-TRANSFER-016
    :priority: high
    :release: v1.0
 
@@ -935,7 +804,6 @@ Non-Functional Tests
    :id: TC-TRANSFER-NFR-017
    :status: approved
    :tags: transfer, maintainability, code-quality
-   :tests: NFR-TRANSFER-017
    :priority: high
    :release: v1.0
 
@@ -945,7 +813,6 @@ Non-Functional Tests
    :id: TC-TRANSFER-NFR-018
    :status: approved
    :tags: transfer, maintainability, code-quality
-   :tests: NFR-TRANSFER-018
    :priority: high
    :release: v1.0
 
@@ -955,7 +822,6 @@ Non-Functional Tests
    :id: TC-TRANSFER-NFR-019
    :status: approved
    :tags: transfer, scalability
-   :tests: NFR-TRANSFER-019
    :priority: medium
    :release: v1.0
 
@@ -965,7 +831,6 @@ Non-Functional Tests
    :id: TC-TRANSFER-NFR-020
    :status: approved
    :tags: transfer, scalability, performance
-   :tests: NFR-TRANSFER-020
    :priority: high
    :release: v1.0
 
@@ -975,7 +840,6 @@ Non-Functional Tests
    :id: TC-TRANSFER-NFR-021
    :status: approved
    :tags: transfer, scalability, performance
-   :tests: NFR-TRANSFER-021
    :priority: low
    :release: v1.0
 
@@ -985,7 +849,6 @@ Non-Functional Tests
    :id: TC-TRANSFER-NFR-022
    :status: approved
    :tags: transfer, security, crypto-agility
-   :tests: NFR-TRANSFER-022
    :priority: high
    :release: v1.0
 
@@ -1000,48 +863,4 @@ Non-Functional Tests
    5. Verify unpack correctly handles both manifests without user intervention
 
    **Pass Criteria:** Multiple hash algorithms supported through a common interface; no architectural changes required to add a new algorithm.
-
-Test Procedures
----------------
-
-Offline Operation Test (TC-TRANSFER-NFR-003)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-**Preconditions:**
-
-- App installed
-- Network disconnected (airplane mode or an air-gapped system)
-
-**Steps:**
-
-- Disconnect network
-- Pack 1GB test dataset
-- Unpack and verify
-- Check all operations completed
-
-**Pass Criteria:** All operations complete successfully with no network.
-
-Checksum Verification Test (TC-INT-003)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-**Preconditions:**
-
-- Valid chunk files
-- Manifest with checksums
-
-**Steps:**
-
-- Corrupt one chunk file (modify 1 byte)
-- Run unpack operation
-- Verify error is reported
-- Confirm unpack aborts
-
-**Pass Criteria:** Corrupted chunk detected, unpack aborted with clear error.
-
-Pass/Fail Criteria
----------------------
-
-- **All Critical tests must pass** before release
-- **All High priority tests must pass** before release
-- **Medium priority tests:** 90% pass rate acceptable
 

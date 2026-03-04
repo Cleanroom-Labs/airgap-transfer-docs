@@ -11,7 +11,7 @@ Transfer a large dataset (e.g., machine learning models, video collection) that 
    :status: approved
    :tags: transfer, workflow, multi-usb, swap
    :release: v1.0
-   :links: FR-TRANSFER-002; FR-TRANSFER-006; FR-TRANSFER-008; FR-TRANSFER-012; FR-TRANSFER-013; FR-TRANSFER-024; FR-TRANSFER-025; FR-TRANSFER-026
+   :specifies: FR-TRANSFER-002; FR-TRANSFER-006; FR-TRANSFER-008; FR-TRANSFER-012; FR-TRANSFER-013; FR-TRANSFER-024; FR-TRANSFER-025; FR-TRANSFER-026
 
    Transfer large dataset (30GB) requiring multiple USB swaps with small capacity drives (4x 8GB USBs).
 
@@ -21,7 +21,7 @@ Transfer a large dataset (e.g., machine learning models, video collection) that 
 
    **Unpack:** Support progressive unpack with USB swaps, process USBs in any order, verify each chunk before extraction, resume if interrupted mid-swap.
 
-   **Success Criteria:** Handle 4+ USB swaps without errors, clear prompts for USB insertion, verify integrity across all chunks, work with USBs in any order.
+   **Acceptance Criteria:** Handle 4+ USB swaps without errors, clear prompts for USB insertion, verify integrity across all chunks, work with USBs in any order.
 
 --------------
 
@@ -119,8 +119,8 @@ Phase 3: Unpack on Destination
 
 --------------
 
-Success Criteria
-----------------
+Acceptance Criteria
+-------------------
 
 - ✅ Handle 4+ USB swaps without errors
 - ✅ Resume if interrupted mid-swap
@@ -160,11 +160,3 @@ User Experience Notes
 - Show overall progress: “18GB of 30GB transferred (60%)”
 - Show chunk progress: “Chunk 3/4: 8GB written”
 
---------------
-
-Related Documents
------------------
-
-- :doc:`SRS <../requirements/srs>` - Multi-chunk requirements
-- :doc:`SDD <../design/sdd>` - State management for resume
-- :doc:`Roadmap <../roadmap>` - USB handling milestone

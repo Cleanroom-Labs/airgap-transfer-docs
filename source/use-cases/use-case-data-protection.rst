@@ -11,7 +11,7 @@ An IT administrator accidentally targets a directory containing existing files d
    :status: approved
    :tags: transfer, safety, error-handling
    :release: v1.0
-   :links: FR-TRANSFER-038; FR-TRANSFER-039; FR-TRANSFER-040; FR-TRANSFER-041; FR-TRANSFER-056
+   :specifies: FR-TRANSFER-038; FR-TRANSFER-039; FR-TRANSFER-040; FR-TRANSFER-041; FR-TRANSFER-056
 
    Prevent accidental data loss through overwrite protection, destination path validation, safe USB synchronization, and atomic write operations.
 
@@ -21,7 +21,7 @@ An IT administrator accidentally targets a directory containing existing files d
 
    **Safe media handling:** USB writes are synced to ensure data is flushed to disk before ejection.
 
-   **Success Criteria:** No accidental data loss, clear warnings before destructive operations, safe USB handling.
+   **Acceptance Criteria:** No accidental data loss, clear warnings before destructive operations, safe USB handling.
 
 --------------
 
@@ -114,8 +114,8 @@ Without the sync step, ejecting a USB immediately after a write could result in 
 
 --------------
 
-Success Criteria
-----------------
+Acceptance Criteria
+-------------------
 
 - Existing files are never silently overwritten
 - Clear error messages explain what would be overwritten and how to proceed
@@ -143,4 +143,3 @@ Related Documents
 
 - :doc:`Error Recovery <use-case-error-recovery>` — Resume after failures
 - :doc:`Large File Transfer <use-case-large-file>` — Standard transfer workflow
-- :doc:`SRS <../requirements/srs>` — Safety and overwrite protection requirements

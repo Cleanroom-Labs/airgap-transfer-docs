@@ -97,7 +97,7 @@ SBOM Transfer *(v1.1)*
 - Log SBOM presence in audit trail
 - Chain-of-custody documentation
 
-:doc:`Use Case: Transfer Deployment Package with SBOM <use-case-sbom-transfer>`
+:need:`UC-TRANSFER-004`
 
 Diagnostic & Operational Use Cases
 -----------------------------------
@@ -210,11 +210,3 @@ User errors                  < 5% (clear guidance prevents mistakes)
 Cross-platform compatibility macOS, Windows, Linux
 ============================ =======================================
 
-See Also
---------
-
-- :doc:`Requirements (SRS) <../requirements/srs>` - Detailed functional requirements
-- :doc:`Design (SDD) <../design/sdd>` - Architecture and implementation
-- :doc:`Test Plan <../testing/plan>` - Test cases and verification
-- :doc:`Roadmap <../roadmap>` - Implementation roadmap
-- `Principles <https://cleanroomlabs.dev/docs/meta/principles.html>`_ - Design principles guiding all decisions

@@ -8,7 +8,6 @@ Use Cases
    use-case-large-file
    use-case-large-directory
    use-case-multiple-usb
-   use-case-sbom-transfer
    use-case-verify-integrity
    use-case-error-recovery
    use-case-data-protection

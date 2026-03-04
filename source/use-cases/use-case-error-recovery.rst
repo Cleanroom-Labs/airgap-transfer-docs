@@ -11,7 +11,7 @@ A field technician's pack operation is interrupted mid-way — the USB drive run
    :status: approved
    :tags: transfer, error-recovery, resume, state
    :release: v1.0
-   :links: FR-TRANSFER-024; FR-TRANSFER-025; FR-TRANSFER-027; FR-TRANSFER-035; FR-TRANSFER-036; FR-TRANSFER-037
+   :specifies: FR-TRANSFER-024; FR-TRANSFER-025; FR-TRANSFER-027; FR-TRANSFER-035; FR-TRANSFER-036; FR-TRANSFER-037
 
    Recover from an interrupted pack or unpack operation using manifest-based state tracking and the ``--resume`` flag.
 
@@ -21,7 +21,7 @@ A field technician's pack operation is interrupted mid-way — the USB drive run
 
    **Resume:** User runs the same command with ``--resume``. The tool reads the manifest, identifies the last completed chunk, and continues from there.
 
-   **Success Criteria:** Transfer completes successfully after recovery with no data loss or corruption.
+   **Acceptance Criteria:** Transfer completes successfully after recovery with no data loss or corruption.
 
 --------------
 
@@ -124,8 +124,8 @@ Scenario C: Missing Chunks During Unpack
 
 --------------
 
-Success Criteria
-----------------
+Acceptance Criteria
+-------------------
 
 - Interrupted operations resume from the last completed chunk, not from scratch
 - Clear error messages explain what failed and how to recover
@@ -153,4 +153,3 @@ Related Documents
 
 - :doc:`Large File Transfer <use-case-large-file>` — Standard pack/unpack workflow
 - :doc:`Multi-USB Transfer <use-case-multiple-usb>` — Multi-drive coordination with resume
-- :doc:`SRS <../requirements/srs>` — State management and resume requirements

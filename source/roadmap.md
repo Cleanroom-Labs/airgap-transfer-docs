@@ -274,57 +274,8 @@ Defer all of this until after shipping:
 
 ## After MVP
 
-### v1.1 — SBOM-Aware Transfer Manifests
-
-- [ ] Reference CycloneDX SBOM in transfer manifest when present
-- [ ] Log SBOM presence in transfer audit trail
-
-### v1.2 — Authenticated Encryption (AEAD) for Chunks at Rest
-
-Addresses the USB interception threat: if a drive is lost or intercepted, chunk data
-should be unreadable and manifest tampering should be detectable.
-
-- [ ] Optional AEAD encryption of chunks via `--passphrase` / `--passphrase-file`
-- [ ] ChaCha20-Poly1305 default, trait-based pluggable AEAD backend
-- [ ] Argon2id key derivation from user passphrase (KDF params stored in manifest)
-- [ ] Unique nonce per chunk (nonce reuse = fatal error)
-- [ ] Manifest authentication via keyed MAC (HMAC-SHA256, KMAC, or BLAKE3 keyed)
-- [ ] Encryption metadata recorded in manifest (algorithm, KDF params, nonces, MAC)
-- [ ] Passphrase never written to disk/logs; zeroized after key derivation
-
-**Design notes:** AEAD chosen over separate encrypt-then-HMAC to eliminate composition
-errors. Digital signatures rejected — this is a closed-world scenario (same operator
-packs and unpacks) with no need for non-repudiation or third-party verification.
-Symmetric crypto is also inherently PQC-resilient (Grover's algorithm halves effective
-key strength; ChaCha20-Poly1305 with 256-bit keys retains ~128-bit security under
-quantum attack).
-
-### Future
-
-**Compression & Performance:**
-- Compression support (gzip, zstd)
-- Parallel chunk processing
-- Performance optimization for large datasets
-
-**Automation & Integration:**
-- Automatic USB detection and swapping
-- Integration API for AirGap Deploy workflows
-
-## Key Documents
-
-| Document | Purpose |
-|----------|---------|
-| [Principles](https://cleanroomlabs.dev/docs/meta/principles.html) | Design principles (read first) |
-| [Requirements (SRS)](requirements/srs) | Functional and non-functional requirements |
-| [Design (SDD)](design/sdd) | Architecture and component design |
-| [Test Plan](testing/plan) | Test cases with traceability |
-
-## See Also
-
-- [Meta-Architecture](https://cleanroomlabs.dev/docs/meta/meta-architecture.html) — How AirGap Transfer fits in the AirGap suite
-- [Specification Overview](https://cleanroomlabs.dev/docs/meta/specification-overview.html) — Project statistics and traceability overview
-- [AirGap Deploy](https://cleanroomlabs.dev/docs/deploy/readme.html) — Deployment packaging companion tool
-- [Cleanroom Whisper](https://cleanroomlabs.dev/docs/whisper/readme.html) — Offline transcription app
+Planned requirements for v1.1 and v1.2 are maintained in the
+[Future Requirements](requirements/future) planning page.
 
 ## Progress Log
 
