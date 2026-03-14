@@ -12,7 +12,7 @@ from theme_config import *
 # Override default paths from theme_config.py for this project's layout
 html_static_path = ['../common/sphinx/_static']
 templates_path = ['../common/sphinx/_templates']
-html_favicon = '../common/sphinx/_static/favicon.ico'
+html_favicon = setup_project_favicon('AirGap Transfer', os.path.abspath('../common'))
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
 # -- Project information -----------------------------------------------------
